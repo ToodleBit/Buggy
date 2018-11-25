@@ -257,7 +257,7 @@ namespace ToodleBit {
     */
     //% weight=4
 	//% advanced=true
-    //% blockId=toodlebit_forward block="forward:(ms) %pause" blockGap=16
+    //% blockId=toodlebit_forwardseconds block="forward:(ms) %pause"
     export function forwardSeconds(int ms): void {
         // Add code here
 			pins.servoSetPulse(pin_left_wheel, 1300)
