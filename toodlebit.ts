@@ -262,7 +262,7 @@ namespace ToodleBit {
         // Add code here
 			pins.servoSetPulse(pin_left_wheel, 1300)
 			pins.servoSetPulse(pin_right_wheel, 1700)
-			fiber_sleep(ms)
+			
 			pins.digitalWritePin(digital_pin_left_wheel, 0)
 			pins.digitalWritePin(digital_pin_right_wheel, 0)
     }
