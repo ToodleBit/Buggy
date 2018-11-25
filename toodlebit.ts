@@ -48,90 +48,134 @@ namespace ToodleBit {
     }
 
 
-
-    /**
-    * Move forward
+	/**
+    * Move forward a set number of milliseconds (0 = no time limit)
+    * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
-    //% weight=9
-    //% blockId=toodlebit_forward block="forward"
-    export function forward(): void {
+    //% weight=4
+    //% blockId=toodlebit_forwardseconds block="forward:(ms) %ms"
+	 //% ms.shadow="timePicker"
+    export function forwardSeconds(ms: number): void {
         // Add code here
-
-	pins.servoSetPulse(pin_left_wheel, 1300)
-        pins.servoSetPulse(pin_right_wheel, 1700)
-
+	    if (ms == 0){
+		  	pins.servoSetPulse(pin_left_wheel, 1300)
+			pins.servoSetPulse(pin_right_wheel, 1700)
+	    } else {
+			pins.servoSetPulse(pin_left_wheel, 1300)
+			pins.servoSetPulse(pin_right_wheel, 1700)
+			basic.pause(ms)
+			pins.digitalWritePin(digital_pin_left_wheel, 0)
+			pins.digitalWritePin(digital_pin_right_wheel, 0)
+	    }
     }
-
-
-
-    /**
-    * Move backwards
+	
+/**
+    * Move backwards a set number of milliseconds (0 = no time limit)
+    * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
-    //% weight=8
-    //% blockId=toodlebit_back block="backwards"
-    export function back(): void {
+    //% weight=4
+    //% blockId=toodlebit_backwardseconds block="backwards:(ms) %ms"
+	 //% ms.shadow="timePicker"
+    export function backwardsSeconds(ms: number): void {
         // Add code here
-
-	pins.servoSetPulse(pin_left_wheel, 1690)
-        pins.servoSetPulse(pin_right_wheel, 1300)
-
+	    if (ms == 0){
+		  	pins.servoSetPulse(pin_left_wheel, 1690)
+			pins.servoSetPulse(pin_right_wheel, 1300)
+	    } else {
+			pins.servoSetPulse(pin_left_wheel, 1690)
+			pins.servoSetPulse(pin_right_wheel, 1300)
+			basic.pause(ms)
+			pins.digitalWritePin(digital_pin_left_wheel, 0)
+			pins.digitalWritePin(digital_pin_right_wheel, 0)
+	    }
     }
-
-
-
+	
     /**
-    * Turn left
+    * Turn left for a set number of Milliseconds (0 = no time limit)
     */
     //% weight=7
-    //% blockId=toodlebit_left block="turn left"
-    export function turnleft(): void {
+    //% blockId=toodlebit_leftseconds block="turn left:(ms) %ms"
+	//% ms.shadow="timePicker"
+    export function turnleftSeconds(): void {
         // Add code here
-
-	pins.servoSetPulse(pin_left_wheel, 1500)
-        pins.servoSetPulse(pin_right_wheel, 1650)
-
+					if (ms == 0){
+						pins.servoSetPulse(pin_left_wheel, 1500)
+						pins.servoSetPulse(pin_right_wheel, 1650)
+					} else {
+						pins.servoSetPulse(pin_left_wheel, 1500)
+						pins.servoSetPulse(pin_right_wheel, 1650)
+						basic.pause(ms)
+						pins.digitalWritePin(digital_pin_left_wheel, 0)
+						pins.digitalWritePin(digital_pin_right_wheel, 0)
+							}
     }
 
 
     /**
-    * Turn right
+    * Turn right for a set number of Milliseconds (0 = no time limit)
     */
     //% weight=6
-    //% blockId=toodlebit_right block="turn right"
-    export function turnright(): void {
+    //% blockId=toodlebit_rightseconds block="turn right:(ms) %ms"
+	//% ms.shadow="timePicker"
+    export function turnrightSeconds(): void {
         // Add code here
+					if (ms == 0){
+						pins.servoSetPulse(pin_left_wheel, 1350)
+						pins.servoSetPulse(pin_right_wheel, 1500)
+						} else {
+						pins.servoSetPulse(pin_left_wheel, 1350)
+						pins.servoSetPulse(pin_right_wheel, 1500)
+						basic.pause(ms)
+						pins.digitalWritePin(digital_pin_left_wheel, 0)
+						pins.digitalWritePin(digital_pin_right_wheel, 0)
+						}
 
-        pins.servoSetPulse(pin_left_wheel, 1350)
-        pins.servoSetPulse(pin_right_wheel, 1500)
-
-    }
-
+			}
+	
 
 	/**
-    * Gentle right turn
+    * Gentle right turn for a set number of Milliseconds (0 = no time limit)
     */
     //% weight=6
-    //% blockId=toodlebit_rightslow block="gentle right turn"
-    export function turnrightslow(): void {
+    //% blockId=toodlebit_rightslowseconds block="gentle right turn:(ms) %ms"
+	//% ms.shadow="timePicker"
+    export function turnrightslowseconds(): void {
         // Add code here
+					if (ms == 0){
+						pins.servoSetPulse(pin_left_wheel, 1200)
+						pins.servoSetPulse(pin_right_wheel, 1700)
+						} else {
+						pins.servoSetPulse(pin_left_wheel, 1200)
+						pins.servoSetPulse(pin_right_wheel, 1700)
+						basic.pause(ms)
+						pins.digitalWritePin(digital_pin_left_wheel, 0)
+						pins.digitalWritePin(digital_pin_right_wheel, 0)
+						
+						}
 
-        pins.servoSetPulse(pin_left_wheel, 1200)
-        pins.servoSetPulse(pin_right_wheel, 1700)
+			}
 
-    }
-
-		 /**
-    * Gentle left turn
+	/**
+    * Gentle left turn for a set number of Milliseconds (0 = no time limit)
     */
     //% weight=7
-    //% blockId=toodlebit_leftslow block="gentle left turn"
-    export function turnleftslow(): void {
+    //% blockId=toodlebit_leftslowseconds block="gentle left turn:(ms) %ms"
+	//% ms.shadow="timePicker"
+    export function turnleftslowseconds(): void {
         // Add code here
+				if (ms == 0){
+					pins.servoSetPulse(pin_left_wheel, 1300)
+					pins.servoSetPulse(pin_right_wheel, 1800)
+					} else {
+					pins.servoSetPulse(pin_left_wheel, 1300)
+					pins.servoSetPulse(pin_right_wheel, 1800)
+					basic.pause(ms)
+					pins.digitalWritePin(digital_pin_left_wheel, 0)
+					pins.digitalWritePin(digital_pin_right_wheel, 0)
+					}
+		}
 
-        pins.servoSetPulse(pin_left_wheel, 1300)
-        pins.servoSetPulse(pin_right_wheel, 1800)
-
-    }
+    
     /**
     * Stop the buggy
     */
@@ -251,48 +295,97 @@ namespace ToodleBit {
 			}
     }
 
+
 	/**
-    * Move forward a set number of seconds (0 = no time limit)
-    * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
+    * Move forward
     */
-    //% weight=4
+    //% weight=9
 	//% advanced=true
-    //% blockId=toodlebit_forwardseconds block="forward:(ms) %ms"
-	 //% ms.shadow="timePicker"
-    export function forwardSeconds(ms: number): void {
+    //% blockId=toodlebit_forward block="forward"
+    export function forward(): void {
+		// Add code here
+
+		pins.servoSetPulse(pin_left_wheel, 1300)
+        pins.servoSetPulse(pin_right_wheel, 1700)
+
+    }
+
+
+
+    /**
+    * Move backwards
+    */
+    //% weight=8
+	//% advanced=true
+    //% blockId=toodlebit_back block="backwards"
+    export function back(): void {
         // Add code here
-	    if (ms == 0){
-		  	pins.servoSetPulse(pin_left_wheel, 1300)
-			pins.servoSetPulse(pin_right_wheel, 1700)
-	    } else {
-			pins.servoSetPulse(pin_left_wheel, 1300)
-			pins.servoSetPulse(pin_right_wheel, 1700)
-			basic.pause(ms)
-			pins.digitalWritePin(digital_pin_left_wheel, 0)
-			pins.digitalWritePin(digital_pin_right_wheel, 0)
-	    }
+
+		pins.servoSetPulse(pin_left_wheel, 1690)
+        pins.servoSetPulse(pin_right_wheel, 1300)
+
+    }
+
+
+
+    /**
+    * Turn left
+    */
+    //% weight=7
+	//% advanced=true
+    //% blockId=toodlebit_left block="turn left"
+    export function turnleft(): void {
+        // Add code here
+
+	pins.servoSetPulse(pin_left_wheel, 1500)
+    pins.servoSetPulse(pin_right_wheel, 1650)
+
+    }
+
+
+    /**
+    * Turn right
+    */
+    //% weight=6
+	//% advanced=true
+    //% blockId=toodlebit_right block="turn right"
+    export function turnright(): void {
+        // Add code here
+
+        pins.servoSetPulse(pin_left_wheel, 1350)
+        pins.servoSetPulse(pin_right_wheel, 1500)
+
+    }
+
+
+	/**
+    * Gentle right turn
+    */
+    //% weight=6
+	//% advanced=true
+    //% blockId=toodlebit_rightslow block="gentle right turn"
+    export function turnrightslow(): void {
+        // Add code here
+
+        pins.servoSetPulse(pin_left_wheel, 1200)
+        pins.servoSetPulse(pin_right_wheel, 1700)
+
+    }
+
+		 /**
+    * Gentle left turn
+    */
+    //% weight=7
+	//% advanced=true
+    //% blockId=toodlebit_leftslow block="gentle left turn"
+    export function turnleftslow(): void {
+        // Add code here
+
+        pins.servoSetPulse(pin_left_wheel, 1300)
+        pins.servoSetPulse(pin_right_wheel, 1800)
+
     }
 	
-/**
-    * Move backwards a set number of seconds (0 = no time limit)
-    * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
-    */
-    //% weight=4
-	//% advanced=true
-    //% blockId=toodlebit_backwardseconds block="backwards:(ms) %ms"
-	 //% ms.shadow="timePicker"
-    export function backwardsSeconds(ms: number): void {
-        // Add code here
-	    if (ms == 0){
-		  	pins.servoSetPulse(pin_left_wheel, 1690)
-			pins.servoSetPulse(pin_right_wheel, 1300)
-	    } else {
-			pins.servoSetPulse(pin_left_wheel, 1690)
-			pins.servoSetPulse(pin_right_wheel, 1300)
-			basic.pause(ms)
-			pins.digitalWritePin(digital_pin_left_wheel, 0)
-			pins.digitalWritePin(digital_pin_right_wheel, 0)
-	    }
-    }
+	
 	
 }
