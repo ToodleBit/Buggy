@@ -22,7 +22,7 @@ namespace ToodleBit {
     * @param right describe parameter here, eg: AnalogPin.P2
     */
     //% weight=10
-    //% blockId=toodlebit_init block="set left wheel at pin %left|right wheel at pin %right"
+    //% blockId=toodlebit_init block="left wheel: pin %left|right wheel: pin %right"
     export function init_wheel(left: AnalogPin, right: AnalogPin): void {
         // Add code here
 
