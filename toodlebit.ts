@@ -251,4 +251,21 @@ namespace ToodleBit {
 			}
     }
 
+	/**
+    * Move forward a set number of seconds
+    * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
+    */
+    //% weight=4
+	//% advanced=true
+    //% blockId=toodlebit_forward block=forward:(ms) %pause" blockGap=16
+    export function forwardSeconds(): void {
+        // Add code here
+			pins.servoSetPulse(pin_left_wheel, 1300)
+			pins.servoSetPulse(pin_right_wheel, 1700)
+			fiber_sleep(ms);
+			pins.digitalWritePin(digital_pin_left_wheel, 0)
+			pins.digitalWritePin(digital_pin_right_wheel, 0)
+    }
+	
+	
 }
