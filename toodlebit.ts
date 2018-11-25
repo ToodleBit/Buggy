@@ -151,32 +151,62 @@ namespace ToodleBit {
 
     /**
     * Choose the power for each wheel
-    * @param m the m from -100 (min) to 100 (max), eg:0
-    * @param n the n from -100 (min) to 100 (max), eg:0
+    * @param m the m from -3 (min) to 3 (max), eg:0
+    * @param n the n from -3 (min) to 3 (max), eg:0
     */
     //% weight=4
 	//% advanced=true
     //% blockId=toodlebit_freestyle block="left wheel speed %m| right wheel speed %n"
-    //% m.min=-100 m.max=100
-    //% n.min=-100 n.max=100
+    //% m.min=-2 m.max=2
+    //% n.min=-2 n.max=2
     export function freestyle(m: number, n: number): void {
         // Add code here
 
-        if (m > 0) {
-            pins.servoSetPulse(pin_left_wheel, 1650 + m * 4)
-        } else if (m < 0) {
-            pins.servoSetPulse(pin_left_wheel, 1350 - m * 4)
-        } else pins.servoSetPulse(pin_left_wheel, 1500)
+		
+		 switch (m) {
+            case -2:
+                pins.servoSetPulse(pin_right_wheel, 1000)
+                break
+            case -1:
+                pins.servoSetPulse(pin_right_wheel, 1350)
+                break
+            case 0:
+                pins.servoSetPulse(pin_right_wheel, 1500)
+                break
+            case 1:
+                pins.servoSetPulse(pin_right_wheel, 1650)
+                break
+			case 2:
+                pins.servoSetPulse(pin_right_wheel, 2000)
+                break
+            default:
+                pins.servoSetPulse(pin_right_wheel, 1500)
 
+        }
+		
+		switch (n) {
+            case -2:
+                pins.servoSetPulse(pin_left_wheel, 1000)
+                break
+            case -1:
+                pins.servoSetPulse(pin_left_wheel, 1350)
+                break
+            case 0:
+                pins.servoSetPulse(pin_left_wheel, 1500)
+                break
+            case 1:
+                pins.servoSetPulse(pin_left_wheel, 1650)
+                break
+			case 2:
+                pins.servoSetPulse(pin_left_wheel, 2000)
+                break
+            default:
+                pins.servoSetPulse(pin_left_wheel, 1500)
 
-        if (n > 0) {
-            pins.servoSetPulse(pin_right_wheel, 1350 - n * 4)
-        } else if (n < 0) {
-            pins.servoSetPulse(pin_right_wheel, 1650 + n * 4)
-        } else pins.servoSetPulse(pin_right_wheel, 1500)
+        }
+      
 
     }
-	
 	    /**
     * get Ultrasonic distance
     */
