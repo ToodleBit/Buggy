@@ -1,7 +1,7 @@
 {
     "name": "ToodleBit",
     "version": "0.0.10",
-    "description": "Code blocks to move your buggy",
+    "description": "Code blocks to control your buggy",
     "license": "MIT",
     "dependencies": {
         "core": "*"
