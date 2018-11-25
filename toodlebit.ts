@@ -252,20 +252,47 @@ namespace ToodleBit {
     }
 
 	/**
-    * Move forward a set number of seconds
+    * Move forward a set number of seconds (0 = no time limit)
     * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=4
 	//% advanced=true
-    //% blockId=toodlebit_forwardseconds block="forward:(ms) %pause"
+    //% blockId=toodlebit_forwardseconds block="forward:(ms) %ms"
+	 //% ms.shadow="timePicker"
     export function forwardSeconds(ms: number): void {
         // Add code here
+	    if (ms == 0){
+		  	pins.servoSetPulse(pin_left_wheel, 1300)
+			pins.servoSetPulse(pin_right_wheel, 1700)
+	    } else {
 			pins.servoSetPulse(pin_left_wheel, 1300)
 			pins.servoSetPulse(pin_right_wheel, 1700)
 			basic.pause(ms)
 			pins.digitalWritePin(digital_pin_left_wheel, 0)
 			pins.digitalWritePin(digital_pin_right_wheel, 0)
+	    }
     }
 	
+/**
+    * Move backwards a set number of seconds (0 = no time limit)
+    * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
+    */
+    //% weight=4
+	//% advanced=true
+    //% blockId=toodlebit_backwardseconds block="backwards:(ms) %ms"
+	 //% ms.shadow="timePicker"
+    export function backwardsSeconds(ms: number): void {
+        // Add code here
+	    if (ms == 0){
+		  	pins.servoSetPulse(pin_left_wheel, 1700)
+			pins.servoSetPulse(pin_right_wheel, 1300)
+	    } else {
+			pins.servoSetPulse(pin_left_wheel, 1700)
+			pins.servoSetPulse(pin_right_wheel, 1300)
+			basic.pause(ms)
+			pins.digitalWritePin(digital_pin_left_wheel, 0)
+			pins.digitalWritePin(digital_pin_right_wheel, 0)
+	    }
+    }
 	
 }
