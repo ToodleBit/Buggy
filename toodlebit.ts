@@ -72,7 +72,7 @@ namespace ToodleBit {
     export function back(): void {
         // Add code here
 
-	pins.servoSetPulse(pin_left_wheel, 1700)
+	pins.servoSetPulse(pin_left_wheel, 1690)
         pins.servoSetPulse(pin_right_wheel, 1300)
 
     }
@@ -284,10 +284,10 @@ namespace ToodleBit {
     export function backwardsSeconds(ms: number): void {
         // Add code here
 	    if (ms == 0){
-		  	pins.servoSetPulse(pin_left_wheel, 1700)
+		  	pins.servoSetPulse(pin_left_wheel, 1690)
 			pins.servoSetPulse(pin_right_wheel, 1300)
 	    } else {
-			pins.servoSetPulse(pin_left_wheel, 1700)
+			pins.servoSetPulse(pin_left_wheel, 1690)
 			pins.servoSetPulse(pin_right_wheel, 1300)
 			basic.pause(ms)
 			pins.digitalWritePin(digital_pin_left_wheel, 0)
