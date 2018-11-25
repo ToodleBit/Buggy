@@ -97,7 +97,7 @@ namespace ToodleBit {
     //% weight=7
     //% blockId=toodlebit_leftseconds block="turn left:(ms) %ms"
 	//% ms.shadow="timePicker"
-    export function turnleftSeconds(): void {
+    export function turnleftSeconds(ms: number): void {
         // Add code here
 					if (ms == 0){
 						pins.servoSetPulse(pin_left_wheel, 1500)
@@ -119,7 +119,7 @@ namespace ToodleBit {
     //% weight=6
     //% blockId=toodlebit_rightseconds block="turn right:(ms) %ms"
 	//% ms.shadow="timePicker"
-    export function turnrightSeconds(): void {
+    export function turnrightSeconds(ms: number): void {
         // Add code here
 					if (ms == 0){
 						pins.servoSetPulse(pin_left_wheel, 1350)
@@ -142,7 +142,7 @@ namespace ToodleBit {
     //% weight=6
     //% blockId=toodlebit_rightslowseconds block="gentle right turn:(ms) %ms"
 	//% ms.shadow="timePicker"
-    export function turnrightslowseconds(): void {
+    export function turnrightslowseconds(ms: number): void {
         // Add code here
 					if (ms == 0){
 						pins.servoSetPulse(pin_left_wheel, 1200)
@@ -165,7 +165,7 @@ namespace ToodleBit {
     //% weight=5
     //% blockId=toodlebit_leftslowseconds block="gentle left turn:(ms) %ms"
 	//% ms.shadow="timePicker"
-    export function turnleftslowseconds(): void {
+    export function turnleftslowseconds(ms: number): void {
         // Add code here
 				if (ms == 0){
 					pins.servoSetPulse(pin_left_wheel, 1300)
