@@ -52,7 +52,7 @@ namespace ToodleBit {
     * Move forward a set number of milliseconds (0 = no time limit)
     * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
-    //% weight=4
+    //% weight=9
     //% blockId=toodlebit_forwardseconds block="forward:(ms) %ms"
 	 //% ms.shadow="timePicker"
     export function forwardSeconds(ms: number): void {
@@ -73,7 +73,7 @@ namespace ToodleBit {
     * Move backwards a set number of milliseconds (0 = no time limit)
     * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
-    //% weight=4
+    //% weight=8
     //% blockId=toodlebit_backwardseconds block="backwards:(ms) %ms"
 	 //% ms.shadow="timePicker"
     export function backwardsSeconds(ms: number): void {
@@ -92,6 +92,7 @@ namespace ToodleBit {
 	
     /**
     * Turn left for a set number of Milliseconds (0 = no time limit)
+	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=7
     //% blockId=toodlebit_leftseconds block="turn left:(ms) %ms"
@@ -113,6 +114,7 @@ namespace ToodleBit {
 
     /**
     * Turn right for a set number of Milliseconds (0 = no time limit)
+	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=6
     //% blockId=toodlebit_rightseconds block="turn right:(ms) %ms"
@@ -135,6 +137,7 @@ namespace ToodleBit {
 
 	/**
     * Gentle right turn for a set number of Milliseconds (0 = no time limit)
+	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=6
     //% blockId=toodlebit_rightslowseconds block="gentle right turn:(ms) %ms"
@@ -157,8 +160,9 @@ namespace ToodleBit {
 
 	/**
     * Gentle left turn for a set number of Milliseconds (0 = no time limit)
+	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
-    //% weight=7
+    //% weight=5
     //% blockId=toodlebit_leftslowseconds block="gentle left turn:(ms) %ms"
 	//% ms.shadow="timePicker"
     export function turnleftslowseconds(): void {
@@ -179,7 +183,7 @@ namespace ToodleBit {
     /**
     * Stop the buggy
     */
-    //% weight=5
+    //% weight=4
     //% blockId=toodlebit_brake block="brake"
     export function brake(): void {
         // Add code here
@@ -198,7 +202,7 @@ namespace ToodleBit {
     * @param m the m from -3 (min) to 3 (max), eg:0
     * @param n the n from -3 (min) to 3 (max), eg:0
     */
-    //% weight=4
+    //% weight=10
 	//% advanced=true
     //% blockId=toodlebit_freestyle block="left wheel speed %m| right wheel speed %n"
     //% m.min=-2 m.max=2
@@ -255,7 +259,7 @@ namespace ToodleBit {
     * get Ultrasonic distance
     */
     //% blockId=toodlebit_sonarbit block="Ultrasonic distance(cm) on|pin %pin"
-    //% weight=5
+    //% weight=9
 //% advanced=true
     export function sonarbit_distance(pin: DigitalPin): number {
 
@@ -280,7 +284,7 @@ namespace ToodleBit {
     * crash sensor
     */
     //% blockId=toodlebit_crash block="crash sensor on|pin %pin"
-    //% weight=6
+    //% weight=8
 	//% advanced=true
     export function toodlebit_crash(pin: DigitalPin): number {
 
@@ -294,98 +298,6 @@ namespace ToodleBit {
 				 return 1
 			}
     }
-
-
-	/**
-    * Move forward
-    */
-    //% weight=9
-	//% advanced=true
-    //% blockId=toodlebit_forward block="forward"
-    export function forward(): void {
-		// Add code here
-
-		pins.servoSetPulse(pin_left_wheel, 1300)
-        pins.servoSetPulse(pin_right_wheel, 1700)
-
-    }
-
-
-
-    /**
-    * Move backwards
-    */
-    //% weight=8
-	//% advanced=true
-    //% blockId=toodlebit_back block="backwards"
-    export function back(): void {
-        // Add code here
-
-		pins.servoSetPulse(pin_left_wheel, 1690)
-        pins.servoSetPulse(pin_right_wheel, 1300)
-
-    }
-
-
-
-    /**
-    * Turn left
-    */
-    //% weight=7
-	//% advanced=true
-    //% blockId=toodlebit_left block="turn left"
-    export function turnleft(): void {
-        // Add code here
-
-	pins.servoSetPulse(pin_left_wheel, 1500)
-    pins.servoSetPulse(pin_right_wheel, 1650)
-
-    }
-
-
-    /**
-    * Turn right
-    */
-    //% weight=6
-	//% advanced=true
-    //% blockId=toodlebit_right block="turn right"
-    export function turnright(): void {
-        // Add code here
-
-        pins.servoSetPulse(pin_left_wheel, 1350)
-        pins.servoSetPulse(pin_right_wheel, 1500)
-
-    }
-
-
-	/**
-    * Gentle right turn
-    */
-    //% weight=6
-	//% advanced=true
-    //% blockId=toodlebit_rightslow block="gentle right turn"
-    export function turnrightslow(): void {
-        // Add code here
-
-        pins.servoSetPulse(pin_left_wheel, 1200)
-        pins.servoSetPulse(pin_right_wheel, 1700)
-
-    }
-
-		 /**
-    * Gentle left turn
-    */
-    //% weight=7
-	//% advanced=true
-    //% blockId=toodlebit_leftslow block="gentle left turn"
-    export function turnleftslow(): void {
-        // Add code here
-
-        pins.servoSetPulse(pin_left_wheel, 1300)
-        pins.servoSetPulse(pin_right_wheel, 1800)
-
-    }
-	
 	
 	
 }
