@@ -186,19 +186,19 @@ namespace ToodleBit {
 		
 		switch (n) {
             case -2:
-                pins.servoSetPulse(pin_left_wheel, 1000)
+                pins.servoSetPulse(pin_left_wheel, 2000)
                 break
             case -1:
-                pins.servoSetPulse(pin_left_wheel, 1350)
+                pins.servoSetPulse(pin_left_wheel, 1650)
                 break
             case 0:
                 pins.servoSetPulse(pin_left_wheel, 1500)
                 break
             case 1:
-                pins.servoSetPulse(pin_left_wheel, 1650)
+                pins.servoSetPulse(pin_left_wheel, 1350)
                 break
 			case 2:
-                pins.servoSetPulse(pin_left_wheel, 2000)
+                pins.servoSetPulse(pin_left_wheel, 1000)
                 break
             default:
                 pins.servoSetPulse(pin_left_wheel, 1500)
