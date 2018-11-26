@@ -257,9 +257,9 @@ namespace ToodleBit {
 
     }
 	    /**
-    * get Ultrasonic distance
+    * get ultrasonic distance
     */
-    //% blockId=toodlebit_sonarbit block="Ultrasonic distance(cm) on|pin %pin"
+    //% blockId=toodlebit_sonarbit block="ultrasonic distance(cm) on|pin %pin"
     //% weight=9
 //% advanced=true
     export function sonarbit_distance(pin: DigitalPin): number {
