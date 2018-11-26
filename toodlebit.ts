@@ -61,9 +61,12 @@ namespace ToodleBit {
 		if (x < 0){
 			adjust_left_wheel = Math.abs(x)*5
 			adjust_right_wheel = 0
-			} else {
+			} else if (x > 0) {
 			adjust_right_wheel = x * 5
 			adjust_left_wheel = 0
+			} else {
+			adjust_left_wheel = 0
+			adjust_right_wheel = 0
 			}
     }
 	
