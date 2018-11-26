@@ -199,7 +199,7 @@ namespace ToodleBit {
 
 
     /**
-    * Choose the power for each wheel (-3 to +3)
+    * Choose the power/direction for each wheel (-3 to +3)
     * @param m the m from -3 (min) to 3 (max), eg:0
     * @param n the n from -3 (min) to 3 (max), eg:0
     */
