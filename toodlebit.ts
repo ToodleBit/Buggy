@@ -60,8 +60,10 @@ namespace ToodleBit {
     export function adjustWheel(x: number) {
 		if (x < 0){
 			adjust_left_wheel = Math.abs(x)*5
+			adjust_right_wheel = 0
 			} else {
 			adjust_right_wheel = x * 5
+			adjust_left_wheel = 0
 			}
     }
 	
