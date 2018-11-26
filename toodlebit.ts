@@ -49,11 +49,11 @@ namespace ToodleBit {
 
 
 	/**
-    * Move forward a set number of milliseconds (0 = no time limit)
+    * Move forward for a set number of milliseconds (0 = no time limit)
     * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=9
-    //% blockId=toodlebit_forwardseconds block="forward:(ms) %ms"
+    //% blockId=toodlebit_forwardseconds block="forward: %ms"
 	 //% ms.shadow="timePicker"
     export function forwardSeconds(ms: number): void {
         // Add code here
@@ -70,11 +70,11 @@ namespace ToodleBit {
     }
 	
 /**
-    * Move backwards a set number of milliseconds (0 = no time limit)
+    * Move backwards for a set number of milliseconds (0 = no time limit)
     * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=8
-    //% blockId=toodlebit_backwardseconds block="backwards:(ms) %ms"
+    //% blockId=toodlebit_backwardseconds block="backwards: %ms"
 	 //% ms.shadow="timePicker"
     export function backwardsSeconds(ms: number): void {
         // Add code here
@@ -95,7 +95,7 @@ namespace ToodleBit {
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=7
-    //% blockId=toodlebit_leftseconds block="turn left:(ms) %ms"
+    //% blockId=toodlebit_leftseconds block="turn left: %ms"
 	//% ms.shadow="timePicker"
     export function turnleftSeconds(ms: number): void {
         // Add code here
@@ -117,7 +117,7 @@ namespace ToodleBit {
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=6
-    //% blockId=toodlebit_rightseconds block="turn right:(ms) %ms"
+    //% blockId=toodlebit_rightseconds block="turn right: %ms"
 	//% ms.shadow="timePicker"
     export function turnrightSeconds(ms: number): void {
         // Add code here
@@ -140,7 +140,7 @@ namespace ToodleBit {
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=6
-    //% blockId=toodlebit_rightslowseconds block="slow right turn:(ms) %ms"
+    //% blockId=toodlebit_rightslowseconds block="slow right turn: %ms"
 	//% ms.shadow="timePicker"
     export function turnrightslowseconds(ms: number): void {
         // Add code here
@@ -163,7 +163,7 @@ namespace ToodleBit {
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=5
-    //% blockId=toodlebit_leftslowseconds block="slow left turn:(ms) %ms"
+    //% blockId=toodlebit_leftslowseconds block="slow left turn: %ms"
 	//% ms.shadow="timePicker"
     export function turnleftslowseconds(ms: number): void {
         // Add code here
