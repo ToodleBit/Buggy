@@ -17,12 +17,12 @@ namespace ToodleBit {
     let digital_pin_right_wheel = DigitalPin.P2
 
     /**
-    * TODO: describe your function here
+    * Set each wheel to the correct pin
     * @param left describe parameter here, eg: AnalogPin.P1
     * @param right describe parameter here, eg: AnalogPin.P2
     */
     //% weight=10
-    //% blockId=toodlebit_init block="left wheel: pin %left|right wheel: pin %right"
+    //% blockId=toodlebit_init block="left wheel: %left|right wheel: %right"
     export function init_wheel(left: AnalogPin, right: AnalogPin): void {
         // Add code here
 
@@ -136,11 +136,11 @@ namespace ToodleBit {
 	
 
 	/**
-    * Gentle right turn for a set number of Milliseconds (0 = no time limit)
+    * Slow right turn for a set number of Milliseconds (0 = no time limit)
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=6
-    //% blockId=toodlebit_rightslowseconds block="gentle right turn:(ms) %ms"
+    //% blockId=toodlebit_rightslowseconds block="slow right turn:(ms) %ms"
 	//% ms.shadow="timePicker"
     export function turnrightslowseconds(ms: number): void {
         // Add code here
@@ -159,11 +159,11 @@ namespace ToodleBit {
 			}
 
 	/**
-    * Gentle left turn for a set number of Milliseconds (0 = no time limit)
+    * Slow left turn for a set number of Milliseconds (0 = no time limit)
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=5
-    //% blockId=toodlebit_leftslowseconds block="gentle left turn:(ms) %ms"
+    //% blockId=toodlebit_leftslowseconds block="slow left turn:(ms) %ms"
 	//% ms.shadow="timePicker"
     export function turnleftslowseconds(ms: number): void {
         // Add code here
@@ -184,6 +184,7 @@ namespace ToodleBit {
     * Stop the buggy
     */
     //% weight=4
+	//% advanced=true
     //% blockId=toodlebit_brake block="brake"
     export function brake(): void {
         // Add code here
@@ -198,7 +199,7 @@ namespace ToodleBit {
 
 
     /**
-    * Choose the power for each wheel
+    * Choose the power for each wheel (-3 to +3)
     * @param m the m from -3 (min) to 3 (max), eg:0
     * @param n the n from -3 (min) to 3 (max), eg:0
     */
@@ -281,7 +282,7 @@ namespace ToodleBit {
     }
 
 	/**
-    * crash sensor
+    * crash sensor (if = 0 then turn around)
     */
     //% blockId=toodlebit_crash block="crash sensor on|pin %pin"
     //% weight=8
