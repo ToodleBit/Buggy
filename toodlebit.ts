@@ -10,6 +10,9 @@
 //% color=#008C8C weight=10 icon="\uf1b9"
 namespace ToodleBit {
 
+	let adjust_left_wheel = 0
+  	let adjust_right_wheel = 0
+	
     let pin_left_wheel = AnalogPin.P1
     let pin_right_wheel = AnalogPin.P2
 
@@ -49,6 +52,20 @@ namespace ToodleBit {
 
 
 	/**
+    * use this block to adjust forward direction (pulls left: reduce, pulls right: increase)
+    */
+    //% weight=10
+    //% blockId=toodlebit_adjust block="adjust wheels: %x"
+	//% x.min=-5 x.max=5
+    export function adjustWheel(x: number) {
+		if (x < 0){
+			adjust_left_wheel = Math.abs(x)*5
+			} else {
+			adjust_right_wheel = x * 5
+			}
+    }
+	
+	/**
     * Move forward for a set number of milliseconds (0 = no time limit)
     * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
@@ -58,11 +75,11 @@ namespace ToodleBit {
     export function forward(ms: number): void {
         // Add code here
 	    if (ms == 0){
-		  	pins.servoSetPulse(pin_left_wheel, 1300)
-			pins.servoSetPulse(pin_right_wheel, 1700)
+		  	pins.servoSetPulse(pin_left_wheel, 1300 - adjust_left_wheel)
+			pins.servoSetPulse(pin_right_wheel, 1700 + adjust_right_wheel)
 	    } else {
-			pins.servoSetPulse(pin_left_wheel, 1300)
-			pins.servoSetPulse(pin_right_wheel, 1700)
+			pins.servoSetPulse(pin_left_wheel, 1300 - adjust_left_wheel)
+			pins.servoSetPulse(pin_right_wheel, 1700 + adjust_right_wheel)
 			basic.pause(ms)
 			pins.digitalWritePin(digital_pin_left_wheel, 0)
 			pins.digitalWritePin(digital_pin_right_wheel, 0)
