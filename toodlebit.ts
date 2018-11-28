@@ -80,11 +80,11 @@ namespace ToodleBit {
     export function forward(ms: number): void {
         // Add code here
 	    if (ms == 0){
-		  	pins.servoSetPulse(pin_left_wheel, 1300 - adjust_left_wheel)
-			pins.servoSetPulse(pin_right_wheel, 1700 + adjust_right_wheel)
+			pins.servoWritePin(pin_left_wheel, 180 - adjust_left_wheel)
+			pins.servoWritePin(pin_right_wheel, 0 + adjust_right_wheel)
 	    } else {
-			pins.servoSetPulse(pin_left_wheel, 1300 - adjust_left_wheel)
-			pins.servoSetPulse(pin_right_wheel, 1700 + adjust_right_wheel)
+			pins.servoWritePin(pin_left_wheel, 180 - adjust_left_wheel)
+			pins.servoWritePin(pin_right_wheel, 0 + adjust_right_wheel)
 			basic.pause(ms)
 			pins.digitalWritePin(digital_pin_left_wheel, 0)
 			pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -101,11 +101,11 @@ namespace ToodleBit {
     export function backwards(ms: number): void {
         // Add code here
 	    if (ms == 0){
-		  	pins.servoSetPulse(pin_left_wheel, 1700)
-			pins.servoSetPulse(pin_right_wheel, 1300)
+		  	pins.servoWritePin(pin_left_wheel, 0 + adjust_left_wheel)
+			pins.servoWritePin(pin_right_wheel, 180 - adjust_right_wheel)
 	    } else {
-			pins.servoSetPulse(pin_left_wheel, 1700)
-			pins.servoSetPulse(pin_right_wheel, 1300)
+			pins.servoWritePin(pin_left_wheel, 0 + adjust_left_wheel)
+			pins.servoWritePin(pin_right_wheel, 180 - adjust_right_wheel)
 			basic.pause(ms)
 			pins.digitalWritePin(digital_pin_left_wheel, 0)
 			pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -122,11 +122,11 @@ namespace ToodleBit {
     export function turnleft(ms: number): void {
         // Add code here
 					if (ms == 0){
-						pins.servoSetPulse(pin_left_wheel, 1500)
-						pins.servoSetPulse(pin_right_wheel, 1650)
+						pins.servoWritePin(pin_left_wheel, 90)
+						pins.servoWritePin(pin_right_wheel, 0)
 					} else {
-						pins.servoSetPulse(pin_left_wheel, 1500)
-						pins.servoSetPulse(pin_right_wheel, 1650)
+						pins.servoWritePin(pin_left_wheel, 90)
+						pins.servoWritePin(pin_right_wheel, 0)
 						basic.pause(ms)
 						pins.digitalWritePin(digital_pin_left_wheel, 0)
 						pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -144,11 +144,11 @@ namespace ToodleBit {
     export function turnright(ms: number): void {
         // Add code here
 					if (ms == 0){
-						pins.servoSetPulse(pin_left_wheel, 1350)
-						pins.servoSetPulse(pin_right_wheel, 1500)
+						pins.servoWritePin(pin_left_wheel, 180)
+						pins.servoWritePin(pin_right_wheel, 90)
 						} else {
-						pins.servoSetPulse(pin_left_wheel, 1350)
-						pins.servoSetPulse(pin_right_wheel, 1500)
+						pins.servoWritePin(pin_left_wheel, 180)
+						pins.servoWritePin(pin_right_wheel, 90)
 						basic.pause(ms)
 						pins.digitalWritePin(digital_pin_left_wheel, 0)
 						pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -167,11 +167,11 @@ namespace ToodleBit {
     export function turnrightslow(ms: number): void {
         // Add code here
 					if (ms == 0){
-						pins.servoSetPulse(pin_left_wheel, 1200)
-						pins.servoSetPulse(pin_right_wheel, 1700)
+						pins.servoWritePin(pin_left_wheel, 180)
+						pins.servoWritePin(pin_right_wheel, 45)
 						} else {
-						pins.servoSetPulse(pin_left_wheel, 1200)
-						pins.servoSetPulse(pin_right_wheel, 1700)
+						pins.servoWritePin(pin_left_wheel, 180)
+						pins.servoWritePin(pin_right_wheel, 45)
 						basic.pause(ms)
 						pins.digitalWritePin(digital_pin_left_wheel, 0)
 						pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -190,11 +190,11 @@ namespace ToodleBit {
     export function turnleftslow(ms: number): void {
         // Add code here
 				if (ms == 0){
-					pins.servoSetPulse(pin_left_wheel, 1300)
-					pins.servoSetPulse(pin_right_wheel, 1800)
+					pins.servoWritePin(pin_left_wheel, 145)
+					pins.servoWritePin(pin_right_wheel, 0)
 					} else {
-					pins.servoSetPulse(pin_left_wheel, 1300)
-					pins.servoSetPulse(pin_right_wheel, 1800)
+					pins.servoWritePin(pin_left_wheel, 145)
+					pins.servoWritePin(pin_right_wheel, 0)
 					basic.pause(ms)
 					pins.digitalWritePin(digital_pin_left_wheel, 0)
 					pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -221,63 +221,35 @@ namespace ToodleBit {
 
 
     /**
-    * Choose the power/direction for each wheel (-3 to +3)
-    * @param m the m from -3 (min) to 3 (max), eg:0
-    * @param n the n from -3 (min) to 3 (max), eg:0
+    * Choose the power/direction for each wheel
+    * @param m the m from -90 (min) to 90 (max), eg:0
+    * @param n the n from -90 (min) to 90 (max), eg:0
     */
     //% weight=10
 	//% advanced=true
     //% blockId=toodlebit_freestyle block="left wheel speed %m| right wheel speed %n"
-    //% m.min=-2 m.max=2
-    //% n.min=-2 n.max=2
+    //% m.min=-90 m.max=90
+    //% n.min=-90 n.max=90
     export function freestyle(m: number, n: number): void {
         // Add code here
 
-		
-		 switch (m) {
-            case -2:
-                pins.servoSetPulse(pin_right_wheel, 1000)
-                break
-            case -1:
-                pins.servoSetPulse(pin_right_wheel, 1350)
-                break
-            case 0:
-                pins.servoSetPulse(pin_right_wheel, 1500)
-                break
-            case 1:
-                pins.servoSetPulse(pin_right_wheel, 1650)
-                break
-			case 2:
-                pins.servoSetPulse(pin_right_wheel, 2000)
-                break
-            default:
-                pins.servoSetPulse(pin_right_wheel, 1500)
-
-        }
-		
-		switch (n) {
-            case -2:
-                pins.servoSetPulse(pin_left_wheel, 2000)
-                break
-            case -1:
-                pins.servoSetPulse(pin_left_wheel, 1650)
-                break
-            case 0:
-                pins.servoSetPulse(pin_left_wheel, 1500)
-                break
-            case 1:
-                pins.servoSetPulse(pin_left_wheel, 1350)
-                break
-			case 2:
-                pins.servoSetPulse(pin_left_wheel, 1000)
-                break
-            default:
-                pins.servoSetPulse(pin_left_wheel, 1500)
-
-        }
-      
-
+			if (m < 0){
+				pins.servoWritePin(pin_left_wheel, 90 - m)
+			} else if (m > 0){
+				pins.servoWritePin(pin_left_wheel, 90 + m)
+			} else {
+				pins.digitalWritePin(digital_pin_left_wheel, 0)
+			}
+			
+			if (n < 0){
+				pins.servoWritePin(pin_right_wheel, 90 + m)
+			} else if (n > 0){
+				pins.servoWritePin(pin_right_wheel, 90 - m)
+			} else {
+				pins.digitalWritePin(digital_pin_right_wheel, 0)
+			}
     }
+	
 	    /**
     * get ultrasonic distance
     */
