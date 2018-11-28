@@ -80,11 +80,11 @@ namespace ToodleBit {
     export function forward(ms: number): void {
         // Add code here
 	    if (ms == 0){
-			pins.servoWritePin(pin_left_wheel, 180 - adjust_left_wheel)
-			pins.servoWritePin(pin_right_wheel, 0 + adjust_right_wheel)
+			pins.servoWritePin(pin_left_wheel, 0 + adjust_left_wheel)
+			pins.servoWritePin(pin_right_wheel, 180 - adjust_right_wheel)
 	    } else {
-			pins.servoWritePin(pin_left_wheel, 180 - adjust_left_wheel)
-			pins.servoWritePin(pin_right_wheel, 0 + adjust_right_wheel)
+			pins.servoWritePin(pin_left_wheel, 0 + adjust_left_wheel)
+			pins.servoWritePin(pin_right_wheel, 180 - adjust_right_wheel)
 			basic.pause(ms)
 			pins.digitalWritePin(digital_pin_left_wheel, 0)
 			pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -101,11 +101,11 @@ namespace ToodleBit {
     export function backwards(ms: number): void {
         // Add code here
 	    if (ms == 0){
-		  	pins.servoWritePin(pin_left_wheel, 0 + adjust_left_wheel)
-			pins.servoWritePin(pin_right_wheel, 180 - adjust_right_wheel)
+		  	pins.servoWritePin(pin_left_wheel, 180 - adjust_left_wheel)
+			pins.servoWritePin(pin_right_wheel, 0 + adjust_right_wheel)
 	    } else {
-			pins.servoWritePin(pin_left_wheel, 0 + adjust_left_wheel)
-			pins.servoWritePin(pin_right_wheel, 180 - adjust_right_wheel)
+			pins.servoWritePin(pin_left_wheel, 180 - adjust_left_wheel)
+			pins.servoWritePin(pin_right_wheel, 0 + adjust_right_wheel)
 			basic.pause(ms)
 			pins.digitalWritePin(digital_pin_left_wheel, 0)
 			pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -123,10 +123,10 @@ namespace ToodleBit {
         // Add code here
 					if (ms == 0){
 						pins.servoWritePin(pin_left_wheel, 90)
-						pins.servoWritePin(pin_right_wheel, 0)
+						pins.servoWritePin(pin_right_wheel, 180)
 					} else {
 						pins.servoWritePin(pin_left_wheel, 90)
-						pins.servoWritePin(pin_right_wheel, 0)
+						pins.servoWritePin(pin_right_wheel, 180)
 						basic.pause(ms)
 						pins.digitalWritePin(digital_pin_left_wheel, 0)
 						pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -144,10 +144,10 @@ namespace ToodleBit {
     export function turnright(ms: number): void {
         // Add code here
 					if (ms == 0){
-						pins.servoWritePin(pin_left_wheel, 180)
+						pins.servoWritePin(pin_left_wheel, 0)
 						pins.servoWritePin(pin_right_wheel, 90)
 						} else {
-						pins.servoWritePin(pin_left_wheel, 180)
+						pins.servoWritePin(pin_left_wheel, 0)
 						pins.servoWritePin(pin_right_wheel, 90)
 						basic.pause(ms)
 						pins.digitalWritePin(digital_pin_left_wheel, 0)
@@ -167,11 +167,11 @@ namespace ToodleBit {
     export function turnrightslow(ms: number): void {
         // Add code here
 					if (ms == 0){
-						pins.servoWritePin(pin_left_wheel, 180)
-						pins.servoWritePin(pin_right_wheel, 45)
+						pins.servoWritePin(pin_left_wheel, 0)
+						pins.servoWritePin(pin_right_wheel, 145)
 						} else {
-						pins.servoWritePin(pin_left_wheel, 180)
-						pins.servoWritePin(pin_right_wheel, 45)
+						pins.servoWritePin(pin_left_wheel, 0)
+						pins.servoWritePin(pin_right_wheel, 145)
 						basic.pause(ms)
 						pins.digitalWritePin(digital_pin_left_wheel, 0)
 						pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -190,11 +190,11 @@ namespace ToodleBit {
     export function turnleftslow(ms: number): void {
         // Add code here
 				if (ms == 0){
-					pins.servoWritePin(pin_left_wheel, 145)
-					pins.servoWritePin(pin_right_wheel, 0)
+					pins.servoWritePin(pin_left_wheel, 45)
+					pins.servoWritePin(pin_right_wheel, 180)
 					} else {
-					pins.servoWritePin(pin_left_wheel, 145)
-					pins.servoWritePin(pin_right_wheel, 0)
+					pins.servoWritePin(pin_left_wheel, 45)
+					pins.servoWritePin(pin_right_wheel, 180)
 					basic.pause(ms)
 					pins.digitalWritePin(digital_pin_left_wheel, 0)
 					pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -210,9 +210,6 @@ namespace ToodleBit {
     //% blockId=toodlebit_brake block="brake"
     export function brake(): void {
         // Add code here
-
-        //pins.servoSetPulse(pin_left_wheel, 1500)
-        //pins.servoSetPulse(pin_right_wheel, 1500)
 
         pins.digitalWritePin(digital_pin_left_wheel, 0)
         pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -234,17 +231,17 @@ namespace ToodleBit {
         // Add code here
 
 			if (m < 0){
-				pins.servoWritePin(pin_left_wheel, 90 - m)
-			} else if (m > 0){
 				pins.servoWritePin(pin_left_wheel, 90 + m)
+			} else if (m > 0){
+				pins.servoWritePin(pin_left_wheel, 90 - m)
 			} else {
 				pins.digitalWritePin(digital_pin_left_wheel, 0)
 			}
 			
 			if (n < 0){
-				pins.servoWritePin(pin_right_wheel, 90 + m)
-			} else if (n > 0){
 				pins.servoWritePin(pin_right_wheel, 90 - m)
+			} else if (n > 0){
+				pins.servoWritePin(pin_right_wheel, 90 + m)
 			} else {
 				pins.digitalWritePin(digital_pin_right_wheel, 0)
 			}
