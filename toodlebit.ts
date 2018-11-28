@@ -167,11 +167,11 @@ namespace ToodleBit {
     export function turnrightslow(ms: number): void {
         // Add code here
 					if (ms == 0){
-						pins.servoWritePin(pin_left_wheel, 0)
-						pins.servoWritePin(pin_right_wheel, 145)
+						pins.servoSetPulse(pin_left_wheel, 1200)
+						pins.servoSetPulse(pin_right_wheel, 1700)
 						} else {
-						pins.servoWritePin(pin_left_wheel, 0)
-						pins.servoWritePin(pin_right_wheel, 145)
+						pins.servoSetPulse(pin_left_wheel, 1200)
+						pins.servoSetPulse(pin_right_wheel, 1700)
 						basic.pause(ms)
 						pins.digitalWritePin(digital_pin_left_wheel, 0)
 						pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -190,11 +190,11 @@ namespace ToodleBit {
     export function turnleftslow(ms: number): void {
         // Add code here
 				if (ms == 0){
-					pins.servoWritePin(pin_left_wheel, 45)
-					pins.servoWritePin(pin_right_wheel, 180)
+					pins.servoSetPulse(pin_left_wheel, 1300)
+					pins.servoSetPulse(pin_right_wheel, 1800)
 					} else {
-					pins.servoWritePin(pin_left_wheel, 45)
-					pins.servoWritePin(pin_right_wheel, 180)
+					pins.servoSetPulse(pin_left_wheel, 1300)
+					pins.servoSetPulse(pin_right_wheel, 1800)
 					basic.pause(ms)
 					pins.digitalWritePin(digital_pin_left_wheel, 0)
 					pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -231,7 +231,7 @@ namespace ToodleBit {
         // Add code here
 
 			if (m < 0){
-				pins.servoWritePin(pin_left_wheel, 90 + m)
+				pins.servoWritePin(pin_left_wheel, 90 + Math.abs(m))
 			} else if (m > 0){
 				pins.servoWritePin(pin_left_wheel, 90 - m)
 			} else {
@@ -239,9 +239,9 @@ namespace ToodleBit {
 			}
 			
 			if (n < 0){
-				pins.servoWritePin(pin_right_wheel, 90 - m)
+				pins.servoWritePin(pin_right_wheel, 90 - Math.abs(n))
 			} else if (n > 0){
-				pins.servoWritePin(pin_right_wheel, 90 + m)
+				pins.servoWritePin(pin_right_wheel, 90 + n)
 			} else {
 				pins.digitalWritePin(digital_pin_right_wheel, 0)
 			}
