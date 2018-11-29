@@ -220,13 +220,13 @@ namespace ToodleBit {
 						if (m < -8){
 								pins.servoWritePin(pin_left_wheel, 180) //reverse
 						} else{
-								pins.servoSetPulse(pin_left_wheel, 1500 + (Math.abs(m)*100/2))
+							pins.servoSetPulse(pin_left_wheel, 1500 + (90 + (40 * (Math.abs(m)-1))))
 						}
 			} else if (m > 0){
 						if (m > 8){
 								pins.servoWritePin(pin_left_wheel, 0) //straight
 						} else{
-								pins.servoSetPulse(pin_left_wheel, 1500 - (Math.abs(m)*100/2))
+							pins.servoSetPulse(pin_left_wheel, 1500 - (90 + (40 * (Math.abs(m)-1))))
 						}
 			} else {
 						pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
@@ -236,13 +236,13 @@ namespace ToodleBit {
 						if (n < -8){
 								pins.servoWritePin(pin_right_wheel, 0) //reverse
 						} else{
-								pins.servoSetPulse(pin_right_wheel, 1500 - (Math.abs(n)*100/2))
+							pins.servoSetPulse(pin_right_wheel, 1500 - (90 + (40 * (Math.abs(n)-1))))
 						}
 			} else if (n > 0){
 						if (n > 8){
 								pins.servoWritePin(pin_right_wheel, 180) //straight
 						} else{
-								pins.servoSetPulse(pin_right_wheel, 1500 + (Math.abs(n)*100/2))
+							pins.servoSetPulse(pin_right_wheel, 1500 + (90 + (40 * (Math.abs(m)-1))))
 						}
 			} else {
 						pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
