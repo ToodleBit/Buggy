@@ -245,6 +245,42 @@ namespace ToodleBit {
 					}
     }
 	
+
+ 
+ /**
+    * free turn (minus numbers = left : positive numbers = right)
+    * @param m the m from -5 (min) to 5 (max), eg:0
+    * @param n the n from -5 (min) to 5 (max), eg:0
+    */
+    //% weight=10
+	//% advanced=true
+    //% blockId=toodlebit_freeturn block="turn amount %m"
+    //% m.min=-5 m.max=5
+    export function freeturn(m: number): void {
+        // Add code here
+		
+			if (m < 0){ // turn left
+						if (m < -4){
+								pins.servoWritePin(pin_left_wheel, 180) //hard left turn
+								pins.servoWritePin(pin_right_wheel, 180) 
+						} else{
+							pins.servoSetPulse(pin_left_wheel, 1500 + (90 + (40 * (Math.abs(m)-1)))) //less power
+							pins.servoWritePin(pin_right_wheel, 180) //straight
+						}
+			} else if (m > 0){  //turn right
+						if (m > 4){
+								pins.servoWritePin(pin_left_wheel, 0) //hard right turn
+								pins.servoWritePin(pin_right_wheel, 0) 
+						} else{
+							pins.servoSetPulse(pin_right_wheel, 1500 - (90 + (40 * (Math.abs(m)-1)))) //less power
+							pins.servoWritePin(pin_left_wheel, 0) //straight
+						}
+			} else {
+						pins.servoWritePin(pin_left_wheel, 0) //straight
+						pins.servoWritePin(pin_right_wheel, 180) //straight
+					}
+			
+    }
 	
 	    /**
     * get ultrasonic distance
