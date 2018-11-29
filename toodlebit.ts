@@ -238,7 +238,7 @@ namespace ToodleBit {
 						if (n > 4){
 								pins.servoWritePin(pin_right_wheel, 180) //straight
 						} else{
-							pins.servoSetPulse(pin_right_wheel, 1500 + (90 + (40 * (Math.abs(m)-1))))
+							pins.servoSetPulse(pin_right_wheel, 1500 + (90 + (40 * (Math.abs(n)-1))))
 						}
 			} else {
 						pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
