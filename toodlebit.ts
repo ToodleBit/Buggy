@@ -220,13 +220,13 @@ namespace ToodleBit {
 						if (m < -8){
 								pins.servoWritePin(pin_left_wheel, 180) //reverse
 						} else{
-								pins.servoSetPulse(pin_left_wheel, 1500 - (Math.abs(m)*100/2))
+								pins.servoSetPulse(pin_left_wheel, 1500 + (Math.abs(m)*100/2))
 						}
 			} else if (m > 0){
 						if (m > 8){
 								pins.servoWritePin(pin_left_wheel, 0) //straight
 						} else{
-								pins.servoSetPulse(pin_left_wheel, 1500 + (Math.abs(m)*100/2))
+								pins.servoSetPulse(pin_left_wheel, 1500 - (Math.abs(m)*100/2))
 						}
 			} else {
 						pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
