@@ -264,7 +264,7 @@ namespace ToodleBit {
 								pins.servoWritePin(pin_left_wheel, 180) //hard left turn
 								pins.servoWritePin(pin_right_wheel, 180) 
 						} else{
-							pins.servoSetPulse(pin_left_wheel, 1500 + (90 + (40 * (Math.abs(m)-1)))) //less power
+							pins.servoSetPulse(pin_left_wheel, 1500 - (90 + (40 * (Math.abs(m)-1)))) //less power
 							pins.servoWritePin(pin_right_wheel, 180) //straight
 						}
 			} else if (m > 0){  //turn right
@@ -272,7 +272,7 @@ namespace ToodleBit {
 								pins.servoWritePin(pin_left_wheel, 0) //hard right turn
 								pins.servoWritePin(pin_right_wheel, 0) 
 						} else{
-							pins.servoSetPulse(pin_right_wheel, 1500 - (90 + (40 * (Math.abs(m)-1)))) //less power
+							pins.servoSetPulse(pin_right_wheel, 1500 + (90 + (40 * (Math.abs(m)-1)))) //less power
 							pins.servoWritePin(pin_left_wheel, 0) //straight
 						}
 			} else {
