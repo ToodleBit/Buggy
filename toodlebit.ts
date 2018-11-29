@@ -211,10 +211,6 @@ namespace ToodleBit {
     //% n.min=-5 n.max=5
     export function freestyle(m: number, n: number): void {
         // Add code here
-
-		
-				pins.servoSetPulse(pin_left_wheel, 1300)
-				pins.servoSetPulse(pin_right_wheel, 1800)
 		
 			if (m < 0){
 						if (m < -4){
