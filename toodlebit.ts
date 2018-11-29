@@ -201,14 +201,14 @@ namespace ToodleBit {
 
     /**
     * Choose the power/direction for each wheel
-    * @param m the m from -10 (min) to 10 (max), eg:0
-    * @param n the n from -10 (min) to 10 (max), eg:0
+    * @param m the m from -5 (min) to 5 (max), eg:0
+    * @param n the n from -5 (min) to 5 (max), eg:0
     */
     //% weight=10
 	//% advanced=true
     //% blockId=toodlebit_freestyle block="left wheel speed %m| right wheel speed %n"
-    //% m.min=-10 m.max=10
-    //% n.min=-10 n.max=10
+    //% m.min=-5 m.max=5
+    //% n.min=-5 n.max=5
     export function freestyle(m: number, n: number): void {
         // Add code here
 
@@ -217,13 +217,13 @@ namespace ToodleBit {
 				pins.servoSetPulse(pin_right_wheel, 1800)
 		
 			if (m < 0){
-						if (m < -8){
+						if (m < -4){
 								pins.servoWritePin(pin_left_wheel, 180) //reverse
 						} else{
 							pins.servoSetPulse(pin_left_wheel, 1500 + (90 + (40 * (Math.abs(m)-1))))
 						}
 			} else if (m > 0){
-						if (m > 8){
+						if (m > 4){
 								pins.servoWritePin(pin_left_wheel, 0) //straight
 						} else{
 							pins.servoSetPulse(pin_left_wheel, 1500 - (90 + (40 * (Math.abs(m)-1))))
@@ -233,13 +233,13 @@ namespace ToodleBit {
 					}
 			
 			if (n < 0){
-						if (n < -8){
+						if (n < -4){
 								pins.servoWritePin(pin_right_wheel, 0) //reverse
 						} else{
 							pins.servoSetPulse(pin_right_wheel, 1500 - (90 + (40 * (Math.abs(n)-1))))
 						}
 			} else if (n > 0){
-						if (n > 8){
+						if (n > 4){
 								pins.servoWritePin(pin_right_wheel, 180) //straight
 						} else{
 							pins.servoSetPulse(pin_right_wheel, 1500 + (90 + (40 * (Math.abs(m)-1))))
