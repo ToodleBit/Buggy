@@ -51,24 +51,6 @@ namespace ToodleBit {
     }
 
 
-	/**
-    * use this block to adjust forward direction (pulls left: reduce, pulls right: increase)
-    */
-    //% weight=10
-    //% blockId=toodlebit_adjust block="adjust wheels: %x"
-	//% x.min=-5 x.max=5
-    export function adjustWheel(x: number) {
-		if (x < 0){
-			adjust_left_wheel = Math.abs(x)*5
-			adjust_right_wheel = 0
-			} else if (x > 0) {
-			adjust_right_wheel = x * 5
-			adjust_left_wheel = 0
-			} else {
-			adjust_left_wheel = 0
-			adjust_right_wheel = 0
-			}
-    }
 	
 	/**
     * Move forward for a set number of milliseconds (0 = no time limit)
@@ -80,11 +62,11 @@ namespace ToodleBit {
     export function forward(ms: number): void {
         // Add code here
 	    if (ms == 0){
-			pins.servoWritePin(pin_left_wheel, 0 + adjust_left_wheel)
-			pins.servoWritePin(pin_right_wheel, 180 - adjust_right_wheel)
+			pins.servoWritePin(pin_left_wheel, 0)
+			pins.servoWritePin(pin_right_wheel, 180)
 	    } else {
-			pins.servoWritePin(pin_left_wheel, 0 + adjust_left_wheel)
-			pins.servoWritePin(pin_right_wheel, 180 - adjust_right_wheel)
+			pins.servoWritePin(pin_left_wheel, 0)
+			pins.servoWritePin(pin_right_wheel, 180)
 			basic.pause(ms)
 			pins.digitalWritePin(digital_pin_left_wheel, 0)
 			pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -101,11 +83,11 @@ namespace ToodleBit {
     export function backwards(ms: number): void {
         // Add code here
 	    if (ms == 0){
-		  	pins.servoWritePin(pin_left_wheel, 180 - adjust_left_wheel)
-			pins.servoWritePin(pin_right_wheel, 0 + adjust_right_wheel)
+		  	pins.servoWritePin(pin_left_wheel, 180)
+			pins.servoWritePin(pin_right_wheel, 0)
 	    } else {
-			pins.servoWritePin(pin_left_wheel, 180 - adjust_left_wheel)
-			pins.servoWritePin(pin_right_wheel, 0 + adjust_right_wheel)
+			pins.servoWritePin(pin_left_wheel, 180)
+			pins.servoWritePin(pin_right_wheel, 0)
 			basic.pause(ms)
 			pins.digitalWritePin(digital_pin_left_wheel, 0)
 			pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -219,33 +201,54 @@ namespace ToodleBit {
 
     /**
     * Choose the power/direction for each wheel
-    * @param m the m from -90 (min) to 90 (max), eg:0
-    * @param n the n from -90 (min) to 90 (max), eg:0
+    * @param m the m from -10 (min) to 10 (max), eg:0
+    * @param n the n from -10 (min) to 10 (max), eg:0
     */
     //% weight=10
 	//% advanced=true
     //% blockId=toodlebit_freestyle block="left wheel speed %m| right wheel speed %n"
-    //% m.min=-90 m.max=90
-    //% n.min=-90 n.max=90
+    //% m.min=-10 m.max=10
+    //% n.min=-10 n.max=10
     export function freestyle(m: number, n: number): void {
         // Add code here
 
+		
+				pins.servoSetPulse(pin_left_wheel, 1300)
+				pins.servoSetPulse(pin_right_wheel, 1800)
+		
 			if (m < 0){
-				pins.servoWritePin(pin_left_wheel, 90 + Math.abs(m))
+						if (m < -8){
+								pins.servoWritePin(pin_left_wheel, 180) //reverse
+						} else{
+								pins.servoSetPulse(pin_left_wheel, 1500 - (Math.abs(m)*100/2))
+						}
 			} else if (m > 0){
-				pins.servoWritePin(pin_left_wheel, 90 - m)
+						if (m > 8){
+								pins.servoWritePin(pin_left_wheel, 0) //straight
+						} else{
+								pins.servoSetPulse(pin_left_wheel, 1500 + (Math.abs(m)*100/2))
+						}
 			} else {
-				pins.digitalWritePin(digital_pin_left_wheel, 0)
-			}
+						pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
+					}
 			
 			if (n < 0){
-				pins.servoWritePin(pin_right_wheel, 90 - Math.abs(n))
+						if (n < -8){
+								pins.servoWritePin(pin_right_wheel, 0) //reverse
+						} else{
+								pins.servoSetPulse(pin_right_wheel, 1500 + (Math.abs(n)*100/2))
+						}
 			} else if (n > 0){
-				pins.servoWritePin(pin_right_wheel, 90 + n)
+						if (n > 8){
+								pins.servoWritePin(pin_right_wheel, 180) //straight
+						} else{
+								pins.servoSetPulse(pin_right_wheel, 1500 - (Math.abs(n)*100/2))
+						}
 			} else {
-				pins.digitalWritePin(digital_pin_right_wheel, 0)
-			}
+						pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
+					}
     }
+	
 	
 	    /**
     * get ultrasonic distance
