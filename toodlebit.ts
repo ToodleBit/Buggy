@@ -25,7 +25,7 @@ namespace ToodleBit {
     * @param right describe parameter here, eg: AnalogPin.P2
     */
     //% weight=10
-    //% blockId=toodlebit_init block="left wheel: %left|right wheel: %right"
+    //% blockId=toodlebit_init block="left wheel %left|right wheel %right"
     export function init_wheel(left: AnalogPin, right: AnalogPin): void {
         // Add code here
 
@@ -57,7 +57,7 @@ namespace ToodleBit {
     * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=9
-    //% blockId=toodlebit_forward block="forward: %ms"
+    //% blockId=toodlebit_forward block="forward %ms"
 	 //% ms.shadow="timePicker"
     export function forward(ms: number): void {
         // Add code here
@@ -78,7 +78,7 @@ namespace ToodleBit {
     * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=8
-    //% blockId=toodlebit_backward block="backwards: %ms"
+    //% blockId=toodlebit_backward block="backwards %ms"
 	 //% ms.shadow="timePicker"
     export function backwards(ms: number): void {
         // Add code here
@@ -146,11 +146,11 @@ namespace ToodleBit {
 	
 
 	/**
-    * Slow right turn for a set number of Milliseconds (0 = no time limit)
+    * Curved right turn for a set number of Milliseconds (0 = no time limit)
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=6
-    //% blockId=toodlebit_rightslow block="slow right turn: %ms"
+    //% blockId=toodlebit_rightslow block="curved right turn %ms"
 	//% ms.shadow="timePicker"
     export function turnrightslow(ms: number): void {
         // Add code here
@@ -169,11 +169,11 @@ namespace ToodleBit {
 			}
 
 	/**
-    * Slow left turn for a set number of Milliseconds (0 = no time limit)
+    * Curved left turn for a set number of Milliseconds (0 = no time limit)
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=5
-    //% blockId=toodlebit_leftslow block="slow left turn: %ms"
+    //% blockId=toodlebit_leftslow block="curved left turn %ms"
 	//% ms.shadow="timePicker"
     export function turnleftslow(ms: number): void {
         // Add code here
@@ -297,42 +297,6 @@ namespace ToodleBit {
 			
     }
 	
-
- 
- /**
-    * free turn (minus numbers = left : positive numbers = right)
-    * @param m the m from -5 (min) to 5 (max), eg:0
-    * @param n the n from -5 (min) to 5 (max), eg:0
-    */
-    //% weight=10
-	//% advanced=true
-    //% blockId=toodlebit_freeturn block="free turn %m"
-    //% m.min=-5 m.max=5
-    export function freeturn(m: number): void {
-        // Add code here
-		
-			if (m < 0){ // turn left
-						if (m < -4){
-								pins.servoWritePin(pin_left_wheel, 180) //hard left turn
-								pins.servoWritePin(pin_right_wheel, 180) 
-						} else{
-							pins.servoSetPulse(pin_left_wheel, 1500 - (90 + (40 * (Math.abs(m)-1)))) //less power
-							pins.servoWritePin(pin_right_wheel, 180) //straight
-						}
-			} else if (m > 0){  //turn right
-						if (m > 4){
-								pins.servoWritePin(pin_left_wheel, 0) //hard right turn
-								pins.servoWritePin(pin_right_wheel, 0) 
-						} else{
-							pins.servoSetPulse(pin_right_wheel, 1500 + (90 + (40 * (Math.abs(m)-1)))) //less power
-							pins.servoWritePin(pin_left_wheel, 0) //straight
-						}
-			} else {
-						pins.servoWritePin(pin_left_wheel, 0) //straight
-						pins.servoWritePin(pin_right_wheel, 180) //straight
-					}
-			
-    }
 	
 	/**
     * get ultrasonic distance
