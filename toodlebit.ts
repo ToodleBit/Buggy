@@ -2,7 +2,10 @@
  * Use this file to define custom functions and blocks.
  * Read more at https://makecode.microbit.org/blocks/custom
  */
-
+ enum direction {
+    forwards,
+    backwards
+}
 
 /**
  * Custom blocks
@@ -119,10 +122,7 @@ namespace ToodleBit {
     }
 
 
- enum direction {
-    forwards,
-    backwards
-}
+
  /**
     * Turn left for a set number of Milliseconds (0 = no time limit)
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
