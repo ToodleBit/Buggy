@@ -95,6 +95,34 @@ namespace ToodleBit {
     }
 
 	
+
+	
+    /**
+    * Turn left for a set number of Milliseconds (0 = no time limit)
+	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
+    */
+    //% weight=7
+    //% blockId=toodlebit_left block="turn left: %ms"
+	//% ms.shadow="timePicker"
+    export function turnleft(ms: number): void {
+        // Add code here
+					if (ms == 0){
+						pins.servoWritePin(pin_left_wheel, 90)
+						pins.servoWritePin(pin_right_wheel, 180)
+					} else {
+						pins.servoWritePin(pin_left_wheel, 90)
+						pins.servoWritePin(pin_right_wheel, 180)
+						basic.pause(ms)
+						pins.digitalWritePin(digital_pin_left_wheel, 0)
+						pins.digitalWritePin(digital_pin_right_wheel, 0)
+							}
+    }
+
+
+ enum Choice {
+    forwards,
+    backwards
+}
  /**
     * Turn left for a set number of Milliseconds (0 = no time limit)
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
@@ -103,7 +131,7 @@ namespace ToodleBit {
     //% weight=7
     //% blockId=toodlebit_left_direction block="%direction left turn %ms"
 	//% ms.shadow="timePicker"
-    export function turnleftDirection(direction: string, ms: number): void {
+    export function turnleftDirection(direction: Choice, ms: number): void {
         // Add code here
 		if (direction == forwards){
 										if (ms == 0){
@@ -131,28 +159,7 @@ namespace ToodleBit {
 								}
     }
 	
-    /**
-    * Turn left for a set number of Milliseconds (0 = no time limit)
-	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
-    */
-    //% weight=7
-    //% blockId=toodlebit_left block="turn left: %ms"
-	//% ms.shadow="timePicker"
-    export function turnleft(ms: number): void {
-        // Add code here
-					if (ms == 0){
-						pins.servoWritePin(pin_left_wheel, 90)
-						pins.servoWritePin(pin_right_wheel, 180)
-					} else {
-						pins.servoWritePin(pin_left_wheel, 90)
-						pins.servoWritePin(pin_right_wheel, 180)
-						basic.pause(ms)
-						pins.digitalWritePin(digital_pin_left_wheel, 0)
-						pins.digitalWritePin(digital_pin_right_wheel, 0)
-							}
-    }
-
-
+	
     /**
     * Turn right for a set number of Milliseconds (0 = no time limit)
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
