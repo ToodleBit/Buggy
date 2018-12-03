@@ -2,7 +2,7 @@
  * Use this file to define custom functions and blocks.
  * Read more at https://makecode.microbit.org/blocks/custom
  */
- enum direction {
+ enum Direction {
     forwards,
     backwards
 }
@@ -129,11 +129,11 @@ namespace ToodleBit {
 	* @param direction forwards or backwards, eg: forwards, backwards
     */
     //% weight=7
-    //% blockId=toodlebit_left_direction block="%direction left turn %ms"
+    //% blockId=toodlebit_left_direction block="%Direction left turn %ms"
 	//% ms.shadow="timePicker"
-    export function turnleftDirection(direction: direction, ms: number): void {
+    export function turnleftDirection(direction: Direction, ms: number): void {
         // Add code here
-		if (direction == "forwards"){
+		if (Direction == "forwards"){
 										if (ms == 0){
 											pins.servoWritePin(pin_left_wheel, 90)
 											pins.servoWritePin(pin_right_wheel, 180)
