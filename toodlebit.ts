@@ -254,7 +254,7 @@ namespace ToodleBit {
     */
     //% weight=10
 	//% advanced=true
-    //% blockId=toodlebit_freeturn block="turn amount %m"
+    //% blockId=toodlebit_freeturn block="free turn %m"
     //% m.min=-5 m.max=5
     export function freeturn(m: number): void {
         // Add code here
