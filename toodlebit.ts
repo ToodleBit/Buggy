@@ -133,7 +133,7 @@ namespace ToodleBit {
 	//% ms.shadow="timePicker"
     export function turnleftDirection(direction: direction, ms: number): void {
         // Add code here
-		if (direction == forwards){
+		if (direction == "forwards"){
 										if (ms == 0){
 											pins.servoWritePin(pin_left_wheel, 90)
 											pins.servoWritePin(pin_right_wheel, 180)
