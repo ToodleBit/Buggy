@@ -123,18 +123,6 @@ namespace ToodleBit {
 
 
 
- /**
-    * Turn left for a set number of Milliseconds (0 = no time limit)
-	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
-	* @param direction forwards or backwards, eg: forwards, backwards
-    */
-    //% weight=7
-    //% blockId=toodlebit_left_direction block="%Direction left turn %ms"
-	//% ms.shadow="timePicker"
-    export function turnleftDirection(direction: Direction, ms: number): void {
-        // Add code here
-		
-    }
 	
 	
     /**
@@ -233,37 +221,83 @@ namespace ToodleBit {
     export function freestyle(m: number, n: number): void {
         // Add code here
 		
-			if (m < 0){
-						if (m < -4){
-								pins.servoWritePin(pin_left_wheel, 180) //reverse
-						} else{
-							pins.servoSetPulse(pin_left_wheel, 1500 + (90 + (40 * (Math.abs(m)-1))))
-						}
-			} else if (m > 0){
-						if (m > 4){
-								pins.servoWritePin(pin_left_wheel, 0) //straight
-						} else{
-							pins.servoSetPulse(pin_left_wheel, 1500 - (90 + (40 * (Math.abs(m)-1))))
-						}
-			} else {
-						pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
-					}
+		switch (m) {
+            case -5:
+                pins.servoWritePin(pin_left_wheel, 180) //reverse
+                break
+            case -4:
+                pins.servoSetPulse(pin_left_wheel, 1700)
+                break
+            case -3:
+				pins.servoSetPulse(pin_left_wheel, 1670)
+                break
+            case -2:
+				pins.servoSetPulse(pin_left_wheel, 1630)
+				break
+			case -1:
+                pins.servoSetPulse(pin_left_wheel, 1590)
+                break
+			case 0:
+                pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
+                break
+			case 1:
+                pins.servoSetPulse(pin_left_wheel, 1410)
+                break
+			case 2:
+                pins.servoSetPulse(pin_left_wheel, 1360)
+                break
+			case 3:
+                pins.servoSetPulse(pin_left_wheel, 1320)
+                break
+			case 4:
+                pins.servoSetPulse(pin_left_wheel, 1300)
+                break
+			case 5:
+                pins.servoWritePin(pin_left_wheel, 0) //straight
+                break
+            default:
+                pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
+        }
+		
+		switch (n) {
+            case -5:
+                pins.servoWritePin(pin_right_wheel, 0) //reverse
+                break
+            case -4:
+                pins.servoSetPulse(pin_right_wheel, 1410)
+                break
+            case -3:
+				pins.servoSetPulse(pin_right_wheel, 1360)
+                break
+            case -2:
+				pins.servoSetPulse(pin_right_wheel, 1320)
+				break
+			case -1:
+                pins.servoSetPulse(pin_right_wheel, 1300)
+                break
+			case 0:
+                pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
+                break
+			case 1:
+                pins.servoSetPulse(pin_right_wheel, 1700)
+                break
+			case 2:
+                pins.servoSetPulse(pin_right_wheel, 1670)
+                break
+			case 3:
+                pins.servoSetPulse(pin_right_wheel, 1630)
+                break
+			case 4:
+                pins.servoSetPulse(pin_right_wheel, 1700)
+                break
+			case 5:
+                pins.servoWritePin(pin_right_wheel, 180) //straight
+                break
+            default:
+                pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
+        }
+		
 			
-			if (n < 0){
-						if (n < -4){
-								pins.servoWritePin(pin_right_wheel, 0) //reverse
-						} else{
-							pins.servoSetPulse(pin_right_wheel, 1500 - (90 + (40 * (Math.abs(n)-1))))
-						}
-			} else if (n > 0){
-						if (n > 4){
-								pins.servoWritePin(pin_right_wheel, 180) //straight
-						} else{
-							pins.servoSetPulse(pin_right_wheel, 1500 + (90 + (40 * (Math.abs(n)-1))))
-						}
-			} else {
-						pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
-					}
     }
 	
 
