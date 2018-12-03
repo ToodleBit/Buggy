@@ -193,7 +193,7 @@ namespace ToodleBit {
     /**
     * Stop the buggy
     */
-    //% weight=4
+    //% weight=9
 	//% advanced=true
     //% blockId=toodlebit_brake block="brake"
     export function brake(): void {
@@ -302,7 +302,7 @@ namespace ToodleBit {
     * get ultrasonic distance
     */
     //% blockId=toodlebit_sonarbit block="ultrasonic distance(cm) on|pin %pin"
-    //% weight=9
+    //% weight=8
 	//% advanced=true
     export function sonarbit_distance(pin: DigitalPin): number {
 
@@ -327,7 +327,7 @@ namespace ToodleBit {
     * crash sensor (if = 0 then turn around)
     */
     //% blockId=toodlebit_crash block="crash sensor on|pin %pin"
-    //% weight=8
+    //% weight=7
 	//% advanced=true
     export function toodlebit_crash(pin: DigitalPin): number {
 
