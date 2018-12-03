@@ -102,16 +102,16 @@ namespace ToodleBit {
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=7
-    //% blockId=toodlebit_left block="turn left: %ms"
+    //% blockId=toodlebit_left block="left turn %ms"
 	//% ms.shadow="timePicker"
     export function turnleft(ms: number): void {
         // Add code here
 					if (ms == 0){
-						pins.servoWritePin(pin_left_wheel, 90)
-						pins.servoWritePin(pin_right_wheel, 180)
+						pins.servoWritePin(pin_left_wheel, 180) //hard left turn
+						pins.servoWritePin(pin_right_wheel, 180) 
 					} else {
-						pins.servoWritePin(pin_left_wheel, 90)
-						pins.servoWritePin(pin_right_wheel, 180)
+						pins.servoWritePin(pin_left_wheel, 180) //hard left turn
+						pins.servoWritePin(pin_right_wheel, 180) 
 						basic.pause(ms)
 						pins.digitalWritePin(digital_pin_left_wheel, 0)
 						pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -127,16 +127,16 @@ namespace ToodleBit {
 	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
     */
     //% weight=6
-    //% blockId=toodlebit_right block="turn right: %ms"
+    //% blockId=toodlebit_right block="right turn %ms"
 	//% ms.shadow="timePicker"
     export function turnright(ms: number): void {
         // Add code here
 					if (ms == 0){
-						pins.servoWritePin(pin_left_wheel, 0)
-						pins.servoWritePin(pin_right_wheel, 90)
+						pins.servoWritePin(pin_left_wheel, 0) //hard right turn
+						pins.servoWritePin(pin_right_wheel, 0)
 						} else {
-						pins.servoWritePin(pin_left_wheel, 0)
-						pins.servoWritePin(pin_right_wheel, 90)
+						pins.servoWritePin(pin_left_wheel, 0) //hard right turn
+						pins.servoWritePin(pin_right_wheel, 0)
 						basic.pause(ms)
 						pins.digitalWritePin(digital_pin_left_wheel, 0)
 						pins.digitalWritePin(digital_pin_right_wheel, 0)
@@ -334,12 +334,12 @@ namespace ToodleBit {
 			
     }
 	
-	    /**
+	/**
     * get ultrasonic distance
     */
     //% blockId=toodlebit_sonarbit block="ultrasonic distance(cm) on|pin %pin"
     //% weight=9
-//% advanced=true
+	//% advanced=true
     export function sonarbit_distance(pin: DigitalPin): number {
 
         // send pulse
@@ -355,7 +355,7 @@ namespace ToodleBit {
         let distance = d * 10 * 5 / 3 / 58
 
         if (distance > 4000) distance = 0
-	return Math.round(distance / 10) //cm
+		return Math.round(distance / 10) //cm
 
     }
 
@@ -368,9 +368,7 @@ namespace ToodleBit {
     export function toodlebit_crash(pin: DigitalPin): number {
 
         // set pin to 1
-		
         pins.setPull(pin, PinPullMode.PullUp)
-		
 			if (pins.digitalReadPin(pin) == 0) {
 				 return 0
 			} else {
