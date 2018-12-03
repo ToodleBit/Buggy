@@ -119,7 +119,7 @@ namespace ToodleBit {
     }
 
 
- enum Choice {
+ enum direction {
     forwards,
     backwards
 }
@@ -131,7 +131,7 @@ namespace ToodleBit {
     //% weight=7
     //% blockId=toodlebit_left_direction block="%direction left turn %ms"
 	//% ms.shadow="timePicker"
-    export function turnleftDirection(direction: Choice, ms: number): void {
+    export function turnleftDirection(direction: direction, ms: number): void {
         // Add code here
 		if (direction == forwards){
 										if (ms == 0){
