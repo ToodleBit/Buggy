@@ -25,8 +25,8 @@ namespace ToodleBit {
     * @param right describe parameter here, eg: AnalogPin.P2
     */
     //% weight=10
-    //% blockId=toodlebit_init block="left wheel %left|right wheel %right"
-    export function init_wheel(left: AnalogPin, right: AnalogPin): void {
+    //% blockId=toodlebit_setwheels block="left wheel %left|right wheel %right"
+    export function set_wheels(left: AnalogPin, right: AnalogPin): void {
         // Add code here
 
         pin_left_wheel = left
@@ -59,7 +59,7 @@ namespace ToodleBit {
     //% weight=9
     //% blockId=toodlebit_forward block="forward %ms"
 	 //% ms.shadow="timePicker"
-    export function forward(ms: number): void {
+    export function forwards(ms: number): void {
         // Add code here
 	    if (ms == 0){
 			pins.servoWritePin(pin_left_wheel, 0)
@@ -104,7 +104,7 @@ namespace ToodleBit {
     //% weight=7
     //% blockId=toodlebit_left block="left turn %ms"
 	//% ms.shadow="timePicker"
-    export function turnleft(ms: number): void {
+    export function leftTurn(ms: number): void {
         // Add code here
 					if (ms == 0){
 						pins.servoWritePin(pin_left_wheel, 180) //hard left turn
@@ -129,7 +129,7 @@ namespace ToodleBit {
     //% weight=6
     //% blockId=toodlebit_right block="right turn %ms"
 	//% ms.shadow="timePicker"
-    export function turnright(ms: number): void {
+    export function rightTurn(ms: number): void {
         // Add code here
 					if (ms == 0){
 						pins.servoWritePin(pin_left_wheel, 0) //hard right turn
@@ -152,7 +152,7 @@ namespace ToodleBit {
     //% weight=6
     //% blockId=toodlebit_rightslow block="curved right turn %ms"
 	//% ms.shadow="timePicker"
-    export function turnrightslow(ms: number): void {
+    export function curvedRightTurn(ms: number): void {
         // Add code here
 					if (ms == 0){
 						pins.servoSetPulse(pin_left_wheel, 1200)
@@ -175,7 +175,7 @@ namespace ToodleBit {
     //% weight=5
     //% blockId=toodlebit_leftslow block="curved left turn %ms"
 	//% ms.shadow="timePicker"
-    export function turnleftslow(ms: number): void {
+    export function curvedLeftTurn(ms: number): void {
         // Add code here
 				if (ms == 0){
 					pins.servoSetPulse(pin_left_wheel, 1300)
