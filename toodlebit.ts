@@ -226,10 +226,10 @@ namespace ToodleBit {
                 pins.servoSetPulse(pin_left_wheel, 1700)
                 break
             case -3:
-				pins.servoSetPulse(pin_left_wheel, 1630)
+				pins.servoSetPulse(pin_left_wheel, 1610)
                 break
             case -2:
-				pins.servoSetPulse(pin_left_wheel, 1670)
+				pins.servoSetPulse(pin_left_wheel, 1630)
 				break
 			case -1:
                 pins.servoSetPulse(pin_left_wheel, 1590)
@@ -267,7 +267,7 @@ namespace ToodleBit {
 				pins.servoSetPulse(pin_right_wheel, 1390)
                 break
             case -2:
-				pins.servoSetPulse(pin_right_wheel, 1320)
+				pins.servoSetPulse(pin_right_wheel, 1370)
 				break
 			case -1:
                 pins.servoSetPulse(pin_right_wheel, 1300)
