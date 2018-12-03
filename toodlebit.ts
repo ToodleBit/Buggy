@@ -276,7 +276,7 @@ namespace ToodleBit {
                 pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
                 break
 			case 1:
-                pins.servoSetPulse(pin_right_wheel, 1590)
+                pins.servoSetPulse(pin_right_wheel, 1595)
                 break
 			case 2:
                 pins.servoSetPulse(pin_right_wheel, 1610)
