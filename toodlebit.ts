@@ -8,7 +8,7 @@
  * Custom blocks
  */
 //% color=#008C8C weight=10 icon="\uf1b9"
-namespace ToodleBit {
+namespace ToodleBuggy {
 
 	let adjust_left_wheel = 0
   	let adjust_right_wheel = 0
