@@ -193,8 +193,7 @@ namespace ToodleBuggy {
     /**
     * Stop the buggy
     */
-    //% weight=9
-	//% advanced=true
+    //% weight=4
     //% blockId=toodlebit_brake block="brake"
     export function brake(): void {
         // Add code here
