@@ -351,11 +351,11 @@ namespace ToodleBuggy {
     export function slowforwards(ms: number): void {
         // Add code here
 	    if (ms == 0){
-			pins.servoSetPulse(pin_left_wheel, 1600)
 			pins.servoSetPulse(pin_left_wheel, 1380)
+			pins.servoSetPulse(pin_right_wheel, 1600)
 	    } else {
-			pins.servoSetPulse(pin_left_wheel, 1600)
 			pins.servoSetPulse(pin_left_wheel, 1380)
+			pins.servoSetPulse(pin_right_wheel, 1600)
 			basic.pause(ms)
 			pins.digitalWritePin(digital_pin_left_wheel, 0)
 			pins.digitalWritePin(digital_pin_right_wheel, 0)
