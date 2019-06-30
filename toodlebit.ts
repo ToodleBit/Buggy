@@ -250,29 +250,6 @@ namespace ToodleBuggy {
 			}
     }
 	
-	
-		/**
-    * Move forward slowly for a set number of milliseconds (0 = no time limit)
-    * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
-    */
-    //% weight=9
-	//% advanced=true
-    //% blockId=toodlebit_forward_slowly block="test fd slowly %ms"
-	 //% ms.shadow="timePicker"
-    export function slowforwards(ms: number): void {
-        // Add code here
-	    if (ms == 0){
-			pins.servoSetPulse(pin_left_wheel, 1380)
-			pins.servoSetPulse(pin_right_wheel, 1600)
-	    } else {
-			pins.servoSetPulse(pin_left_wheel, 1380)
-			pins.servoSetPulse(pin_right_wheel, 1600)
-			basic.pause(ms)
-			pins.digitalWritePin(digital_pin_left_wheel, 0)
-			pins.digitalWritePin(digital_pin_right_wheel, 0)
-	    }
-    }
-	
 		
 		
     /**
@@ -296,7 +273,7 @@ namespace ToodleBuggy {
                 pins.servoWritePin(pin_left_wheel, 0) //straight
                 break
             default:
-			Left_speed = Math.round(1414-(120/(100/n)))
+			Left_speed = Math.round(1400-(120/(100/n)))
             pins.servoSetPulse(pin_left_wheel, Left_speed)
         }
 		
