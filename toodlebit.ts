@@ -10,17 +10,17 @@
 //% color=#008C8C weight=10 icon="\uf1b9"
 namespace ToodleBuggy {
 
-	let adjust_left_wheel = 0
-  	let adjust_right_wheel = 0
+let adjust_left_wheel = 0
+let adjust_right_wheel = 0
 	
-    let pin_left_wheel = AnalogPin.P1
-    let pin_right_wheel = AnalogPin.P2
+let pin_left_wheel = AnalogPin.P1
+let pin_right_wheel = AnalogPin.P2
 
-    let digital_pin_left_wheel = DigitalPin.P1
-    let digital_pin_right_wheel = DigitalPin.P2
+let digital_pin_left_wheel = DigitalPin.P1
+let digital_pin_right_wheel = DigitalPin.P2
 	
-	let Left_speed = 100
-	let Right_speed = 100
+let Left_speed = 100
+let Right_speed = 100
 
     /**
     * Set each wheel to the correct pin
@@ -53,29 +53,45 @@ namespace ToodleBuggy {
 
     }
 
-
 	
-	/**
-    * Move forward for a set number of milliseconds (0 = no time limit)
-    * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
+    /**
+    * Choose the power/direction for each wheel
+    * @param m the m from 0 (min) to 100 (max), eg:100
+    * @param n the n from 0 (min) to 100 (max), eg:100
     */
-    //% weight=9
-    //% blockId=toodlebit_forward block="forward %ms"
-	 //% ms.shadow="timePicker"
-    export function forwards(ms: number): void {
+    //% weight=10
+    //% blockId=toodlebit_forward_control block="left wheel speed %m| right wheel speed %n"
+    //% m.min=0 m.max=100
+    //% n.min=0 n.max=100
+    export function fdControl(m: number, n: number): void {
         // Add code here
-	    if (ms == 0){
-			pins.servoWritePin(pin_left_wheel, 0)
-			pins.servoWritePin(pin_right_wheel, 180)
-	    } else {
-			pins.servoWritePin(pin_left_wheel, 0)
-			pins.servoWritePin(pin_right_wheel, 180)
-			basic.pause(ms)
-			pins.digitalWritePin(digital_pin_left_wheel, 0)
-			pins.digitalWritePin(digital_pin_right_wheel, 0)
-	    }
+		
+		switch (m) {
+			case 0:
+                pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
+                break
+			case 100:
+                pins.servoWritePin(pin_left_wheel, 0) //straight
+                break
+            default:
+			Left_speed = Math.round(1400-(120/(100/n)))
+            pins.servoSetPulse(pin_left_wheel, Left_speed)
+        }
+		
+		switch (n) {
+			case 0:
+                pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
+                break
+			case 100:
+                pins.servoWritePin(pin_right_wheel, 180) //straight
+                break
+            default:
+                Right_speed = Math.round(1580+(120/(100/n)))
+				pins.servoSetPulse(pin_right_wheel, Right_speed)
+        }
+			
     }
-	
+
 /**
     * Move backwards for a set number of milliseconds (0 = no time limit)
     * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
@@ -148,51 +164,6 @@ namespace ToodleBuggy {
 			}
 	
 
-	/**
-    * Curved right turn for a set number of Milliseconds (0 = no time limit)
-	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
-    */
-    //% weight=6
-    //% blockId=toodlebit_rightslow block="curved right turn %ms"
-	//% ms.shadow="timePicker"
-    export function curvedRightTurn(ms: number): void {
-        // Add code here
-					if (ms == 0){
-						pins.servoSetPulse(pin_left_wheel, 1200)
-						pins.servoSetPulse(pin_right_wheel, 1700)
-						} else {
-						pins.servoSetPulse(pin_left_wheel, 1200)
-						pins.servoSetPulse(pin_right_wheel, 1700)
-						basic.pause(ms)
-						pins.digitalWritePin(digital_pin_left_wheel, 0)
-						pins.digitalWritePin(digital_pin_right_wheel, 0)
-						
-						}
-
-			}
-
-	/**
-    * Curved left turn for a set number of Milliseconds (0 = no time limit)
-	* @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
-    */
-    //% weight=5
-    //% blockId=toodlebit_leftslow block="curved left turn %ms"
-	//% ms.shadow="timePicker"
-    export function curvedLeftTurn(ms: number): void {
-        // Add code here
-				if (ms == 0){
-					pins.servoSetPulse(pin_left_wheel, 1300)
-					pins.servoSetPulse(pin_right_wheel, 1800)
-					} else {
-					pins.servoSetPulse(pin_left_wheel, 1300)
-					pins.servoSetPulse(pin_right_wheel, 1800)
-					basic.pause(ms)
-					pins.digitalWritePin(digital_pin_left_wheel, 0)
-					pins.digitalWritePin(digital_pin_right_wheel, 0)
-					}
-		}
-
-    
     /**
     * Stop the buggy
     */
@@ -213,7 +184,7 @@ namespace ToodleBuggy {
     */
     //% blockId=toodlebit_sonarbit block="ultrasonic distance(cm) on|pin %pin"
     //% weight=8
-	//% advanced=true
+//% advanced=true
     export function sonarbit_distance(pin: DigitalPin): number {
 
         // send pulse
@@ -249,48 +220,5 @@ namespace ToodleBuggy {
 				 return 1
 			}
     }
-	
 		
-		
-    /**
-    * Choose the power/direction for each wheel
-    * @param m the m from 0 (min) to 100 (max), eg:100
-    * @param n the n from 0 (min) to 100 (max), eg:100
-    */
-    //% weight=10
-	//% advanced=true
-    //% blockId=toodlebit_forward_control block="left wheel speed %m| right wheel speed %n"
-    //% m.min=0 m.max=100
-    //% n.min=0 n.max=100
-    export function fdControl(m: number, n: number): void {
-        // Add code here
-		
-		switch (m) {
-			case 0:
-                pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
-                break
-			case 100:
-                pins.servoWritePin(pin_left_wheel, 0) //straight
-                break
-            default:
-			Left_speed = Math.round(1400-(120/(100/n)))
-            pins.servoSetPulse(pin_left_wheel, Left_speed)
-        }
-		
-		switch (n) {
-			case 0:
-                pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
-                break
-			case 100:
-                pins.servoWritePin(pin_right_wheel, 180) //straight
-                break
-            default:
-                Right_speed = Math.round(1580+(120/(100/n)))
-				pins.servoSetPulse(pin_right_wheel, Right_speed)
-        }
-			
-    }		
-	
-	
-	
 }
