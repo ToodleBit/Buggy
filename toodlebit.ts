@@ -18,6 +18,9 @@ namespace ToodleBuggy {
 
     let digital_pin_left_wheel = DigitalPin.P1
     let digital_pin_right_wheel = DigitalPin.P2
+	
+	let Left_speed = 100
+	let Right_speed = 100
 
     /**
     * Set each wheel to the correct pin
@@ -203,98 +206,6 @@ namespace ToodleBuggy {
 
     }
 
-
-    /**
-    * Choose the power/direction for each wheel
-    * @param m the m from -5 (min) to 5 (max), eg:0
-    * @param n the n from -5 (min) to 5 (max), eg:0
-    */
-    //% weight=10
-	//% advanced=true
-    //% blockId=toodlebit_freestyle block="left wheel speed %m| right wheel speed %n"
-    //% m.min=-5 m.max=5
-    //% n.min=-5 n.max=5
-    export function freestyle(m: number, n: number): void {
-        // Add code here
-		
-		switch (m) {
-            case -5:
-                pins.servoWritePin(pin_left_wheel, 180) //reverse
-                break
-            case -4:
-                pins.servoSetPulse(pin_left_wheel, 1700)
-                break
-            case -3:
-				pins.servoSetPulse(pin_left_wheel, 1630)
-                break
-            case -2:
-				pins.servoSetPulse(pin_left_wheel, 1610)
-				break
-			case -1:
-                pins.servoSetPulse(pin_left_wheel, 1595)
-                break
-			case 0:
-                pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
-                break
-			case 1:
-                pins.servoSetPulse(pin_left_wheel, 1410)
-                break
-			case 2:
-                pins.servoSetPulse(pin_left_wheel, 1390)
-                break
-			case 3:
-                pins.servoSetPulse(pin_left_wheel, 1370)
-                break
-			case 4:
-                pins.servoSetPulse(pin_left_wheel, 1300)
-                break
-			case 5:
-                pins.servoWritePin(pin_left_wheel, 0) //straight
-                break
-            default:
-                pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
-        }
-		
-		switch (n) {
-            case -5:
-                pins.servoWritePin(pin_right_wheel, 0) //reverse
-                break
-            case -4:
-                pins.servoSetPulse(pin_right_wheel, 1300)
-                break
-            case -3:
-		pins.servoSetPulse(pin_right_wheel, 1370)
-                break
-            case -2:
-		pins.servoSetPulse(pin_right_wheel, 1390)
-		break
-	case -1:
-                pins.servoSetPulse(pin_right_wheel, 1400)
-                break
-		case 0:
-                pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
-                break
-			case 1:
-                pins.servoSetPulse(pin_right_wheel, 1595)
-                break
-			case 2:
-                pins.servoSetPulse(pin_right_wheel, 1610)
-                break
-			case 3:
-                pins.servoSetPulse(pin_right_wheel, 1630)
-                break
-			case 4:
-                pins.servoSetPulse(pin_right_wheel, 1700)
-                break
-			case 5:
-                pins.servoWritePin(pin_right_wheel, 180) //straight
-                break
-            default:
-                pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
-        }
-		
-			
-    }
 	
 	
 	/**
@@ -361,5 +272,49 @@ namespace ToodleBuggy {
 			pins.digitalWritePin(digital_pin_right_wheel, 0)
 	    }
     }
+	
+		
+		
+    /**
+    * Choose the power/direction for each wheel
+    * @param m the m from 0 (min) to 100 (max), eg:100
+    * @param n the n from 0 (min) to 100 (max), eg:100
+    */
+    //% weight=10
+	//% advanced=true
+    //% blockId=toodlebit_forward_control block="left wheel speed %m| right wheel speed %n"
+    //% m.min=0 m.max=100
+    //% n.min=0 n.max=100
+    export function fdControl(m: number, n: number): void {
+        // Add code here
+		
+		switch (m) {
+			case 0:
+                pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
+                break
+			case 100:
+                pins.servoWritePin(pin_left_wheel, 0) //straight
+                break
+            default:
+			Left_speed = Math.round(1420-(120/(100/n)))
+            pins.servoSetPulse(pin_left_wheel, Left_speed)
+        }
+		
+		switch (n) {
+			case 0:
+                pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
+                break
+			case 100:
+                pins.servoWritePin(pin_right_wheel, 180) //straight
+                break
+            default:
+                Right_speed = Math.round(1580+(120/(100/n)))
+				pins.servoSetPulse(pin_right_wheel, Right_speed)
+        }
+		basic.showNumber(Right_speed)
+		basic.showNumber(Left_speed)	
+    }		
+	
+	
 	
 }
