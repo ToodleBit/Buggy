@@ -296,7 +296,7 @@ namespace ToodleBuggy {
                 pins.servoWritePin(pin_left_wheel, 0) //straight
                 break
             default:
-			Left_speed = Math.round(1420-(120/(100/n)))
+			Left_speed = Math.round(1414-(120/(100/n)))
             pins.servoSetPulse(pin_left_wheel, Left_speed)
         }
 		
@@ -311,8 +311,7 @@ namespace ToodleBuggy {
                 Right_speed = Math.round(1580+(120/(100/n)))
 				pins.servoSetPulse(pin_right_wheel, Right_speed)
         }
-		basic.showNumber(Right_speed)
-		basic.showNumber(Left_speed)	
+			
     }		
 	
 	
