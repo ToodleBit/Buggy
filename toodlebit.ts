@@ -55,12 +55,12 @@ let Right_speed = 100
 
 	
     /**
-    * Choose the power/direction for each wheel
+    * Choose the forward speed for each wheel
     * @param m the m from 0 (min) to 100 (max), eg:100
     * @param n the n from 0 (min) to 100 (max), eg:100
     */
     //% weight=10
-    //% blockId=toodlebit_forward_control block="left wheel speed %m| right wheel speed %n"
+    //% blockId=toodlebit_forward_control block="Forward: left wheel %m| right wheel %n"
     //% m.min=0 m.max=100
     //% n.min=0 n.max=100
     export function fdControl(m: number, n: number): void {
@@ -74,7 +74,7 @@ let Right_speed = 100
                 	pins.servoWritePin(pin_left_wheel, 0) //straight
                 break
           	default:
-			Left_speed = Math.round(1400-(120/(100/n)))
+			Left_speed = Math.round(1400-(120/(100/m)))
 			pins.servoSetPulse(pin_left_wheel, Left_speed)	
        		 }
 		
