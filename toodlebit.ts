@@ -89,33 +89,48 @@ let Right_speed = 100
                 	Right_speed = Math.round(1580+(120/(100/n)))
 			pins.servoSetPulse(pin_right_wheel, Right_speed)	
        		 }
+		
+    }
+
+	 /**
+    * Choose the backwards speed for each wheel
+    * @param a the a from 0 (min) to 100 (max), eg:100
+    * @param b the b from 0 (min) to 100 (max), eg:100
+    */
+    //% weight=10
+    //% blockId=toodlebit_backwards_control block="Backwards: left wheel %a| right wheel %b"
+    //% a.min=0 a.max=100
+    //% b.min=0 b.max=100
+    export function bkControl(a: number, b: number): void {
+        // Add code here
+		
+		switch (a) {
+		case 0:
+                	pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
+                break
+		case 100:
+                	pins.servoWritePin(pin_left_wheel, 180) //straight
+                break
+          	default:
+			Left_speed = Math.round(1580+(120/(100/a)))
+			pins.servoSetPulse(pin_left_wheel, Left_speed)	
+       		 }
+		
+		switch (b) {
+		case 0:
+                	pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
+                break
+		case 100:
+                	pins.servoWritePin(pin_right_wheel, 0) //straight
+                break
+            	default:
+                	Right_speed = Math.round(1400-(120/(100/b)))
+			pins.servoSetPulse(pin_right_wheel, Right_speed)	
+       		 }
 		basic.showNumber(Right_speed)
 		basic.showNumber(Left_speed)
 		
     }
-
-/**
-    * Move backwards for a set number of milliseconds (0 = no time limit)
-    * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
-    */
-    //% weight=8
-    //% blockId=toodlebit_backward block="backwards %ms"
-	 //% ms.shadow="timePicker"
-    export function backwards(ms: number): void {
-        // Add code here
-	    if (ms == 0){
-		  	pins.servoWritePin(pin_left_wheel, 180)
-			pins.servoWritePin(pin_right_wheel, 0)
-	    } else {
-			pins.servoWritePin(pin_left_wheel, 180)
-			pins.servoWritePin(pin_right_wheel, 0)
-			basic.pause(ms)
-			pins.digitalWritePin(digital_pin_left_wheel, 0)
-			pins.digitalWritePin(digital_pin_right_wheel, 0)
-	    }
-    }
-
-	
 
 	
     /**
