@@ -127,8 +127,6 @@ let Right_speed = 100
                 	Right_speed = Math.round(1400-(120/(100/b)))
 			pins.servoSetPulse(pin_right_wheel, Right_speed)	
        		 }
-		basic.showNumber(Right_speed)
-		basic.showNumber(Left_speed)
 		
     }
 
