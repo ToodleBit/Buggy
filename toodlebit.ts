@@ -67,29 +67,31 @@ let Right_speed = 100
         // Add code here
 		
 		switch (m) {
-			case 0:
-                pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
+		case 0:
+                	pins.digitalWritePin(digital_pin_left_wheel, 0) //stop
                 break
-			case 100:
-                pins.servoWritePin(pin_left_wheel, 0) //straight
+		case 100:
+                	pins.servoWritePin(pin_left_wheel, 0) //straight
                 break
-            default:
+          	default:
 			Left_speed = Math.round(1400-(120/(100/n)))
-            pins.servoSetPulse(pin_left_wheel, Left_speed)
-        }
+			pins.servoSetPulse(pin_left_wheel, Left_speed)	
+       		 }
 		
 		switch (n) {
-			case 0:
-                pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
+		case 0:
+                	pins.digitalWritePin(digital_pin_right_wheel, 0) //stop
                 break
-			case 100:
-                pins.servoWritePin(pin_right_wheel, 180) //straight
+		case 100:
+                	pins.servoWritePin(pin_right_wheel, 180) //straight
                 break
-            default:
-                Right_speed = Math.round(1580+(120/(100/n)))
-				pins.servoSetPulse(pin_right_wheel, Right_speed)
-        }
-			
+            	default:
+                	Right_speed = Math.round(1580+(120/(100/n)))
+			pins.servoSetPulse(pin_right_wheel, Right_speed)	
+       		 }
+		basic.showNumber(Right_speed)
+		basic.showNumber(Left_speed)
+		
     }
 
 /**
